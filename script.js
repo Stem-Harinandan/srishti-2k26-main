@@ -255,7 +255,7 @@ setInterval(switchTagline, 4000);
    REVEAL DATES
 ========================= */
 
-const TEST_MODE = false;
+const TEST_MODE = true;
 
 /*
 TEST_MODE = true
