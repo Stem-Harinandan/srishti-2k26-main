@@ -1,0 +1,857 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Srishti 2K26 | Saraswathi Vidyalaya Interschool Cultural Fest |
+      Thiruvananthapuram
+    </title>
+    <meta
+      name="description"
+      content="Srishti 2K26 is the flagship interschool cultural fest of Saraswathi Vidyalaya, Thiruvananthapuram, featuring competitions, performances, creativity, innovation, and student talent."
+    />
+    <link rel="icon" type="image/png" href="/assets/logo.png" />
+    <link rel="apple-touch-icon" href="/assets/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Unbounded:wght@200;400;700;900&family=Cormorant+Garamond:ital,wght@0,30OTH;1,6００&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Event",
+        "name": "Srishti 2K26",
+        "url": "https://srishti.eu.org/",
+        "description": "Srishti 2K26 is the flagship interschool cultural fest of Saraswathi Vidyalaya, Thiruvananthapuram.",
+        "image": ["https://srishti.eu.org/logo_blur.png"],
+        "startDate": "2026-06-02T09:00:00+05:30",
+        "endDate": "2026-06-04T18:00:00+05:30",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Saraswathi Vidyalaya",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Thiruvananthapuram",
+            "addressRegion": "Kerala",
+            "addressCountry": "IN"
+          }
+        },
+        "organizer": {
+          "@type": "Organization",
+          "name": "Saraswathi Vidyalaya",
+          "url": "https://srishti.eu.org/"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1 class="seo-heading">
+      Srishti 2K26 – Official Interschool Cultural Fest of Saraswathi Vidyalaya,
+      Thiruvananthapuram
+    </h1>
+    <!-- GLOBAL FX -->
+    <canvas id="nebulaCanvas"></canvas>
+    <canvas id="particleCanvas"></canvas>
+    <canvas id="auroraCanvas"></canvas>
+    <div class="cursor-trail-container"></div>
+    <div class="noise"></div>
+    <div class="grid-overlay"></div>
+    <div class="scroll-progress"></div>
+    <div class="cursor-dot"></div>
+    <div class="cursor-ring"></div>
+
+    <!-- PRELOADER -->
+    <div id="preloader">
+      <canvas id="preloaderCanvas"></canvas>
+      <img src="assets/logo.png" alt="Srishti" class="preloader-logo" />
+      <div class="loader-line-wrap"><div class="loader-line"></div></div>
+      <p class="loader-text">INITIALIZING EXPERIENCE</p>
+      <div class="loader-percent">0%</div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a href="#" class="nav-brand"><img src="assets/logo.png" alt="Srishti" /></a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#events">Events</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#trailer">Trailer</a>
+        <a href="#schools">Schools</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#team">Team</a>
+        <a href="#countdown">Countdown</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <button id="audioToggle" class="icon-btn">♫</button>
+        <button class="hamburger" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- MOBILE MENU -->
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <aside class="mobile-menu" id="mobileMenu">
+      <button class="mobile-close" id="mobileClose">✕</button>
+      <a href="#about" class="mobile-link">About</a>
+      <a href="#events" class="mobile-link">Events</a>
+      <a href="#schedule" class="mobile-link">Schedule</a>
+      <a href="#trailer" class="mobile-link">Trailer</a>
+      <a href="#schools" class="mobile-link">Schools</a>
+      <a href="#gallery" class="mobile-link">Gallery</a>
+      <a href="#team" class="mobile-link">Team</a>
+      <a href="#countdown" class="mobile-link">Countdown</a>
+      <a href="#contact" class="mobile-link">Contact</a>
+    </aside>
+
+    <!-- HERO -->
+    <section class="hero">
+      <canvas id="heroGalaxyCanvas"></canvas>
+      <canvas id="torchCanvas"></canvas>
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="background.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-overlay"></div>
+      <div class="hero-ambient-words">
+        <span class="ambient-word" style="top: 12%; left: 8%; font-size: 5vw"
+          >CHAOS</span
+        >
+        <span class="ambient-word" style="top: 22%; right: 10%; font-size: 3vw"
+          >ECHOES</span
+        >
+        <span
+          class="ambient-word"
+          style="bottom: 18%; left: 12%; font-size: 4vw"
+          >SRISHTI</span
+        >
+        <span
+          class="ambient-word"
+          style="bottom: 26%; right: 14%; font-size: 3vw"
+          >LEGACY</span
+        >
+        <span class="ambient-word" style="top: 48%; left: 50%; font-size: 6vw"
+          >2K26</span
+        >
+      </div>
+
+      <div class="hero-content" id="heroContent">
+        <div class="hero-topline">INTERSCHOOL CULTURAL EXPERIENCE</div>
+        <!-- INTERACTIVE LOGO -->
+        <div class="hero-logo-wrap" id="heroLogoWrap">
+          <canvas id="logoParticleCanvas"></canvas>
+          <img
+            src="assets/logo.png"
+            alt="Srishti 2K26"
+            class="hero-logo"
+            id="heroLogo"
+          />
+        </div>
+        <p class="hero-description">
+          A cinematic collision of music, performance, fashion, art and energy.
+        </p>
+        <div class="hero-buttons">
+          <a href="#events" class="btn btn-primary">Explore Events</a>
+          <a href="#trailer" class="btn btn-secondary">Watch Trailer</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <h3 data-count="10">0</h3>
+            <p>Events</p>
+          </div>
+          <div class="hero-stat">
+            <h3>∞</h3>
+            <p>Energy</p>
+          </div>
+          <div class="hero-stat">
+            <h3 data-count="3">0</h3>
+            <p>Days</p>
+          </div>
+          <div class="hero-stat">
+            <h3 data-count="500">0</h3>
+            <p>Participants</p>
+          </div>
+        </div>
+      </div>
+      <div class="parallax-layer layer-back" id="layerBack"></div>
+      <div class="parallax-layer layer-mid" id="layerMid"></div>
+      <div class="hero-scroll-hint">
+        <span class="scroll-line"></span>
+        <span class="scroll-label">SCROLL</span>
+      </div>
+    </section>
+
+    <!-- CINEMATIC STORY STRIP (Lando-style scroll reveal) -->
+    <section class="story-strip">
+      <div class="story-panel" data-story="0">
+        <div class="story-line">
+          <span class="story-word">IT</span>
+          <span class="story-word">STARTS</span>
+          <span class="story-word">WITH</span>
+        </div>
+        <div class="story-line story-line-accent">
+          <span class="story-word">AN</span>
+          <span class="story-word">IDEA.</span>
+        </div>
+      </div>
+      <div class="story-panel" data-story="1">
+        <div class="story-line">
+          <span class="story-word">IT</span>
+          <span class="story-word">GROWS</span>
+          <span class="story-word">INTO</span>
+        </div>
+        <div class="story-line story-line-accent">
+          <span class="story-word">A</span>
+          <span class="story-word">MOVEMENT.</span>
+        </div>
+      </div>
+      <div class="story-panel" data-story="2">
+        <div class="story-line story-line-logo">
+          <img
+            src="assets/logo.png"
+            alt="Srishti 2K26"
+            class="story-reveal-logo story-word"
+            id="storyRevealLogo"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO → ABOUT DIVIDER -->
+    <div class="section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-badge">
+        <span class="divider-icon">◈</span>
+        <span class="divider-label">THE STORY</span>
+        <span class="divider-icon">◈</span>
+      </div>
+      <div class="divider-line"></div>
+    </div>
+
+    <!-- SCHOOL IDENTITY -->
+    <section class="school-section">
+      <div class="school-inner reveal">
+        <div class="school-logo-halo">
+          <img src="assets/sv_logo.png" alt="Srishti" class="school-section-logo" />
+        </div>
+        <p class="school-tag">PRESENTED BY</p>
+        <h2 class="school-name">Saraswathy Vidhyalaya</h2>
+        <p class="school-sub">Higher Secondary School · Est. in Excellence</p>
+        <div class="school-divider"></div>
+        <p class="school-desc">
+          Rooted in a tradition of academic and cultural brilliance,<br />
+          Saraswathy Vidhyalaya proudly presents its grandest edition yet.
+        </p>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section-header reveal">
+        <p class="section-tag">THE EXPERIENCE</p>
+        <h2 class="section-title">Not Built For Spectators</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="about-icon">◈</div>
+          <h3>The Vision</h3>
+          <p>
+            Srishti is designed as an immersive cultural experience where
+            creativity becomes performance.
+          </p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon">◉</div>
+          <h3>The Legacy</h3>
+          <p>
+            Every edition pushes scale, production quality and atmosphere
+            further than before.
+          </p>
+        </div>
+        <div class="about-card reveal">
+          <div class="about-icon">◆</div>
+          <h3>The Collision</h3>
+          <p>
+            Music, cinema, fashion, mystery and performance merge into one
+            environment.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEGACY MARQUEE -->
+    <section class="legacy-marquee-section">
+      <div class="legacy-track-wrap">
+        <div class="legacy-track" id="legacyTrack">
+          <span class="legacy-word">CHAOS</span>
+          <span class="legacy-word">·</span>
+          <span class="legacy-word">LEGACY</span>
+          <span class="legacy-word">·</span>
+          <span class="legacy-word">ENERGY</span>
+          <span class="legacy-word">·</span>
+          <span class="legacy-word">VISION</span>
+          <span class="legacy-word">·</span>
+          <span class="legacy-word">CHAOS</span>
+          <span class="legacy-word">·</span>
+          <span class="legacy-word">LEGACY</span>
+          <span class="legacy-word">·</span>
+          <span class="legacy-word">ENERGY</span>
+          <span class="legacy-word">·</span>
+          <span class="legacy-word">VISION</span>
+          <span class="legacy-word">·</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events" class="section">
+      <div class="section-header reveal">
+        <p class="section-tag">FEATURED EXPERIENCES</p>
+        <h2 class="section-title">Events</h2>
+      </div>
+      <div class="events-slider-wrap">
+        <div class="events-grid" id="eventsGrid">
+          <article class="event-card reveal">
+            <div class="event-card-glow"></div>
+            <div class="event-number">01</div>
+            <div class="event-content">
+              <span class="event-category">FILM</span>
+              <h3>Cini Opsis</h3>
+              <p>
+                Cinematic storytelling, visual perception and immersive frame
+                construction.
+              </p>
+              <div class="event-meta">
+                <span>Auditorium</span><span>2 Hours</span>
+              </div>
+            </div>
+          </article>
+          <article class="event-card reveal">
+            <div class="event-card-glow"></div>
+            <div class="event-number">02</div>
+            <div class="event-content">
+              <span class="event-category">MUSIC</span>
+              <h3>Euphony</h3>
+              <p>A collision of rhythm, vocals and live stage energy.</p>
+              <div class="event-meta">
+                <span>Main Stage</span><span>3 Hours</span>
+              </div>
+            </div>
+          </article>
+          <article class="event-card reveal">
+            <div class="event-card-glow"></div>
+            <div class="event-number">03</div>
+            <div class="event-content">
+              <span class="event-category">MYSTERY</span>
+              <h3>221B Baker Street</h3>
+              <p>Deduction, suspense and investigation under pressure.</p>
+              <div class="event-meta">
+                <span>Lab Block</span><span>90 Minutes</span>
+              </div>
+            </div>
+          </article>
+          <article class="event-card reveal">
+            <div class="event-card-glow"></div>
+            <div class="event-number">04</div>
+            <div class="event-content">
+              <span class="event-category">FASHION</span>
+              <h3>Facere</h3>
+              <p>Experimental fashion, movement and visual identity.</p>
+              <div class="event-meta">
+                <span>Ramp Stage</span><span>2 Hours</span>
+              </div>
+            </div>
+          </article>
+          <article class="event-card reveal">
+            <div class="event-card-glow"></div>
+            <div class="event-number">05</div>
+            <div class="event-content">
+              <span class="event-category">ART</span>
+              <h3>Chroma Clash</h3>
+              <p>Fast paced live art battles driven by instinct and speed.</p>
+              <div class="event-meta">
+                <span>Art Block</span><span>2 Hours</span>
+              </div>
+            </div>
+          </article>
+          <article class="event-card reveal">
+            <div class="event-card-glow"></div>
+            <div class="event-number">06</div>
+            <div class="event-content">
+              <span class="event-category">DANCE</span>
+              <h3>Vortex</h3>
+              <p>High intensity choreography and synchronized movement.</p>
+              <div class="event-meta">
+                <span>Main Stage</span><span>3 Hours</span>
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="events-dots" id="eventsDots"></div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section id="schedule" class="section">
+      <div class="section-header reveal">
+        <p class="section-tag">PROGRAM FLOW</p>
+        <h2 class="section-title">Schedule</h2>
+      </div>
+      <div class="schedule-wrapper reveal">
+        <div class="schedule-tabs">
+          <button class="tab-btn active" data-day="1">Day 01</button>
+          <button class="tab-btn" data-day="2">Day 02</button>
+          <button class="tab-btn" data-day="3">Day 03</button>
+        </div>
+        <div class="schedule-day active" data-day="1">
+          <div class="schedule-item">
+            <div class="schedule-time-col">
+              <div class="sch-time">09:00</div>
+              <div class="sch-ampm">AM</div>
+            </div>
+            <div class="sch-dot-col">
+              <div class="sch-dot"></div>
+              <div class="sch-connector"></div>
+            </div>
+            <div class="schedule-info">
+              <h4>Opening Ceremony</h4>
+              <p>Main Auditorium · All participants</p>
+              <div class="sch-tag">CEREMONY</div>
+            </div>
+          </div>
+          <div class="schedule-item">
+            <div class="schedule-time-col">
+              <div class="sch-time">11:00</div>
+              <div class="sch-ampm">AM</div>
+            </div>
+            <div class="sch-dot-col">
+              <div class="sch-dot"></div>
+              <div class="sch-connector"></div>
+            </div>
+            <div class="schedule-info">
+              <h4>Cini Opsis Heats</h4>
+              <p>Film Arena · Group A &amp; B</p>
+              <div class="sch-tag">FILM</div>
+            </div>
+          </div>
+          <div class="schedule-item last">
+            <div class="schedule-time-col">
+              <div class="sch-time">02:00</div>
+              <div class="sch-ampm">PM</div>
+            </div>
+            <div class="sch-dot-col"><div class="sch-dot"></div></div>
+            <div class="schedule-info">
+              <h4>Mystery Round</h4>
+              <p>Lab Block · Teams of 4</p>
+              <div class="sch-tag">MYSTERY</div>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-day" data-day="2">
+          <div class="schedule-item">
+            <div class="schedule-time-col">
+              <div class="sch-time">10:00</div>
+              <div class="sch-ampm">AM</div>
+            </div>
+            <div class="sch-dot-col">
+              <div class="sch-dot"></div>
+              <div class="sch-connector"></div>
+            </div>
+            <div class="schedule-info">
+              <h4>Euphony</h4>
+              <p>Main Stage · Open Category</p>
+              <div class="sch-tag">MUSIC</div>
+            </div>
+          </div>
+          <div class="schedule-item last">
+            <div class="schedule-time-col">
+              <div class="sch-time">01:00</div>
+              <div class="sch-ampm">PM</div>
+            </div>
+            <div class="sch-dot-col"><div class="sch-dot"></div></div>
+            <div class="schedule-info">
+              <h4>Vortex</h4>
+              <p>Dance Arena · All Styles</p>
+              <div class="sch-tag">DANCE</div>
+            </div>
+          </div>
+        </div>
+        <div class="schedule-day" data-day="3">
+          <div class="schedule-item">
+            <div class="schedule-time-col">
+              <div class="sch-time">11:00</div>
+              <div class="sch-ampm">AM</div>
+            </div>
+            <div class="sch-dot-col">
+              <div class="sch-dot"></div>
+              <div class="sch-connector"></div>
+            </div>
+            <div class="schedule-info">
+              <h4>Grand Finals</h4>
+              <p>Main Stage · All Categories</p>
+              <div class="sch-tag">FINALS</div>
+            </div>
+          </div>
+          <div class="schedule-item last">
+            <div class="schedule-time-col">
+              <div class="sch-time">05:00</div>
+              <div class="sch-ampm">PM</div>
+            </div>
+            <div class="sch-dot-col"><div class="sch-dot"></div></div>
+            <div class="schedule-info">
+              <h4>Closing Ceremony</h4>
+              <p>Main Auditorium · Prize Distribution</p>
+              <div class="sch-tag">CEREMONY</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAILER -->
+    <section id="trailer" class="section">
+      <div class="section-header reveal">
+        <p class="section-tag">OFFICIAL TRAILER</p>
+        <h2 class="section-title">Enter The Experience</h2>
+      </div>
+      <div class="trailer-wrapper reveal">
+        <div class="trailer-glow"></div>
+        <video
+          class="trailer-video"
+          controls
+          playsinline
+          poster="thumbnail.jpg"
+        >
+          <source src="trailer.mp4" type="video/mp4" />
+        </video>
+      </div>
+    </section>
+
+    <!-- PARTICIPATING SCHOOLS — horizontal rolling strip -->
+    <section id="schools" class="section schools-section">
+      <div class="section-header reveal">
+        <p class="section-tag">COMPETING SCHOOLS</p>
+        <h2 class="section-title">The Arena</h2>
+        <p class="section-subtitle reveal">
+          Schools stepping into Srishti 2K26
+        </p>
+      </div>
+      <div class="schools-rail-wrap">
+        <div class="schools-rail" id="schoolsRail">
+          <!-- Row 1 — scrolls left -->
+          <div class="schools-track schools-track-left" id="schoolsTrack1">
+            <div class="school-card">
+              <span class="school-card-num">01</span
+              ><span class="school-card-name">Saraswathy Vidhyalaya</span
+              ><span class="school-card-loc">Kodungallur</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">02</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">03</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">04</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">05</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">06</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <!-- duplicated for seamless loop -->
+            <div class="school-card">
+              <span class="school-card-num">01</span
+              ><span class="school-card-name">Saraswathy Vidhyalaya</span
+              ><span class="school-card-loc">Kodungallur</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">02</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">03</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">04</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">05</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card">
+              <span class="school-card-num">06</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+          </div>
+          <!-- Row 2 — scrolls right (reverse) -->
+          <div class="schools-track schools-track-right" id="schoolsTrack2">
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">07</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">08</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">09</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">10</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">11</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">12</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <!-- duplicated -->
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">07</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">08</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">09</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">10</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">11</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+            <div class="school-card school-card-alt">
+              <span class="school-card-num">12</span
+              ><span class="school-card-name">School Name Here</span
+              ><span class="school-card-loc">Location</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section">
+      <div class="section-header reveal">
+        <p class="section-tag">MOMENTS</p>
+        <h2 class="section-title">Gallery</h2>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal"></div>
+        <div class="gallery-item reveal"></div>
+        <div class="gallery-item reveal"></div>
+        <div class="gallery-item reveal"></div>
+        <div class="gallery-item reveal"></div>
+        <div class="gallery-item reveal"></div>
+      </div>
+    </section>
+
+    <!-- PEOPLE BEHIND SRISHTI (renamed from Sponsors) -->
+    <section id="team" class="section team-section">
+      <div class="section-header reveal">
+        <p class="section-tag">THE MAKERS</p>
+        <h2 class="section-title">People Behind Srishti</h2>
+      </div>
+      <div class="team-tiers reveal">
+        <!-- Faculty -->
+        <div class="team-tier">
+          <div class="tier-label">FACULTY COORDINATORS</div>
+          <div class="team-row">
+            <div class="team-card">
+              <div class="team-avatar"></div>
+              <div class="team-name">Faculty Name</div>
+              <div class="team-role">Event Coordinator</div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"></div>
+              <div class="team-name">Faculty Name</div>
+              <div class="team-role">Event Coordinator</div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"></div>
+              <div class="team-name">Faculty Name</div>
+              <div class="team-role">Event Coordinator</div>
+            </div>
+          </div>
+        </div>
+        <!-- Student Council -->
+        <div class="team-tier">
+          <div class="tier-label">STUDENT COUNCIL</div>
+          <div class="team-row">
+            <div class="team-card">
+              <div class="team-avatar"></div>
+              <div class="team-name">Student Name</div>
+              <div class="team-role">Organizing Head</div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"></div>
+              <div class="team-name">Student Name</div>
+              <div class="team-role">Creative Head</div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"></div>
+              <div class="team-name">Student Name</div>
+              <div class="team-role">Technical Head</div>
+            </div>
+            <div class="team-card">
+              <div class="team-avatar"></div>
+              <div class="team-name">Student Name</div>
+              <div class="team-role">Design Head</div>
+            </div>
+          </div>
+        </div>
+        <!-- Sponsors kept below as supporters -->
+        <div class="team-tier">
+          <div class="tier-label">PROUDLY SUPPORTED BY</div>
+          <div class="team-row">
+            <div class="sponsor-card sponsor-title">
+              <div class="sponsor-logo-placeholder">YOUR LOGO</div>
+              <div class="sponsor-name">Title Sponsor</div>
+            </div>
+            <div class="sponsor-card">
+              <div class="sponsor-logo-placeholder">LOGO</div>
+              <div class="sponsor-name">Co-Sponsor</div>
+            </div>
+            <div class="sponsor-card">
+              <div class="sponsor-logo-placeholder">LOGO</div>
+              <div class="sponsor-name">Co-Sponsor</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COUNTDOWN -->
+    <section id="countdown" class="section countdown-section">
+      <div class="section-header reveal">
+        <p class="section-tag">COUNTDOWN</p>
+        <p class="countdown-transmission reveal">
+          Transmission begins in <span id="daysInline">—</span> days.
+        </p>
+      </div>
+      <div class="countdown-grid reveal">
+        <div class="time-card">
+          <h3 id="days">00</h3>
+          <p>Days</p>
+        </div>
+        <div class="time-card">
+          <h3 id="hours">00</h3>
+          <p>Hours</p>
+        </div>
+        <div class="time-card">
+          <h3 id="minutes">00</h3>
+          <p>Minutes</p>
+        </div>
+        <div class="time-card">
+          <h3 id="seconds">00</h3>
+          <p>Seconds</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="contact">
+      <div class="footer-glow"></div>
+      <div class="footer-content">
+        <p class="footer-school reveal">
+          Saraswathy Vidhyalaya Higher Secondary School
+        </p>
+        <img src="assets/logo.png" alt="Srishti" class="footer-logo reveal" />
+        <h2 class="footer-title reveal">See You Inside</h2>
+        <p class="footer-text reveal">The gates open soon.</p>
+        <div class="footer-socials reveal">
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a5.507 5.507 0 0 0-1.99 1.3A5.507 5.507 0 0 0 .42 3.71c-.198.509-.332 1.09-.372 1.943C.01 6.506 0 6.779 0 8c0 1.221.01 1.494.048 2.347.04.853.174 1.434.372 1.943.214.55.502 1.018.85 1.367.349.348.817.636 1.367.85.509.198 1.09.332 1.943.372C6.506 15.99 6.779 16 8 16c1.221 0 1.494-.01 2.347-.048.853-.04 1.434-.174 1.943-.372a5.507 5.507 0 0 0 1.367-.85 5.507 5.507 0 0 0 .85-1.367c.198-.509.332-1.09.372-1.943C15.99 9.494 16 9.221 16 8c0-1.221-.01-1.494-.048-2.347-.04-.853-.174-1.434-.372-1.943a5.507 5.507 0 0 0-.85-1.367 5.507 5.507 0 0 0-1.367-.85c-.509-.198-1.09-.332-1.943-.372C9.494.01 9.221 0 8 0Z"
+              />
+            </svg>
+            Instagram
+          </a>
+          <a href="#">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              fill="currentColor"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M8.051 1.999h-.003C3.58 2 2 3.58 2 8.048v-.001C2 12.42 3.58 14 8.048 14h-.001C12.42 14 14 12.42 14 7.952v.001C14 3.58 12.42 2 8.051 2Zm3.976 6.233-5.84 2.728A.5.5 0 0 1 5.5 10.5v-5a.5.5 0 0 1 .687-.46l5.84 2.272a.5.5 0 0 1 0 .92Z"
+              />
+            </svg>
+            YouTube
+          </a>
+        </div>
+        <div class="footer-bottom reveal">
+          <p>© Srishti 2K26 · Saraswathy Vidhyalaya · All rights reserved</p>
+          <p>Crafted In Chaos · Remembered In Echoes</p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="toast"></div>
+
+    <audio id="bgMusic" loop>
+      <source src="background-music.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="revealSound">
+      <source src="reveal.mp3" type="audio/mp3" />
+    </audio>
+
+    <script src="script.js"></script>
+  </body>
+</html>
