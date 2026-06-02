@@ -1,13 +1,16 @@
-const CACHE = "srishti-v5";
+const CACHE = "srishti-v6";
 const PRECACHE = [
   "/",
   "/index.html",
   "/css/style.css",
   "/css/srishti-redesign.css",
   "/css/animations.css",
+  "/css/section-dividers.css",
   "/css/events-3d.css",
   "/css/legacy-wall.css",
+  "/js/preloader.js",
   "/js/script.js",
+  "/js/section-dividers.js",
   "/js/srishti-core.js",
   "/js/events-3d.js",
   "/js/legacy-wall.js",

@@ -1,0 +1,274 @@
+/* Morphing section dividers + premium finale */
+
+.morph-divider {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: clamp(28px, 5vw, 56px) 0 clamp(12px, 2vw, 24px);
+  overflow: hidden;
+  background: transparent;
+}
+
+.morph-divider__glow {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: min(90vw, 640px);
+  height: 120px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse 80% 60% at 50% 50%,
+    rgba(124, 58, 237, 0.22),
+    transparent 70%
+  );
+  pointer-events: none;
+  filter: blur(24px);
+  animation: morphGlowPulse 6s ease-in-out infinite alternate;
+}
+
+@keyframes morphGlowPulse {
+  from {
+    opacity: 0.5;
+    transform: translate(-50%, -50%) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+  }
+}
+
+.morph-divider__svg {
+  display: block;
+  width: 100%;
+  height: clamp(40px, 7vw, 80px);
+  position: relative;
+  z-index: 1;
+}
+
+.morph-divider__center {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: -8px;
+  padding: 0 5vw;
+}
+
+.morph-divider__line {
+  flex: 1;
+  max-width: 120px;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(192, 132, 252, 0.35),
+    transparent
+  );
+}
+
+.morph-divider__label {
+  font-family: var(--font-mono, "JetBrains Mono", monospace);
+  font-size: clamp(0.58rem, 1.8vw, 0.68rem);
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.38);
+  white-space: nowrap;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 85, 247, 0.15);
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.3s,
+    border-color 0.3s;
+}
+
+.morph-divider__label.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(168, 85, 247, 0.28);
+}
+
+.morph-divider--tight {
+  padding-top: clamp(16px, 3vw, 32px);
+}
+
+.morph-divider--finale {
+  padding: 0;
+  margin-bottom: -1px;
+}
+
+.morph-divider--finale .morph-divider__center {
+  display: none;
+}
+
+/* ─── Premium finale (before footer, not a new section) ─── */
+.premium-finale {
+  position: relative;
+  padding: clamp(72px, 14vw, 120px) 5vw clamp(48px, 8vw, 72px);
+  text-align: center;
+  overflow: hidden;
+  background: #000;
+}
+
+.premium-finale__aurora {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(109, 40, 217, 0.28), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(59, 130, 246, 0.08), transparent 50%),
+    radial-gradient(ellipse 50% 40% at 80% 70%, rgba(168, 85, 247, 0.12), transparent 50%);
+  animation: finaleAurora 14s ease-in-out infinite alternate;
+}
+
+@keyframes finaleAurora {
+  from {
+    opacity: 0.75;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1.05) translateY(-2%);
+  }
+}
+
+#finaleParticles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.premium-finale__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.premium-finale__eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(192, 132, 252, 0.55);
+  margin-bottom: 20px;
+}
+
+.premium-finale__title {
+  font-family: var(--font-display, "Unbounded", sans-serif);
+  font-size: clamp(2.2rem, 9vw, 4.5rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.05;
+  margin: 0 0 16px;
+  background: linear-gradient(
+    120deg,
+    #ffffff 0%,
+    #e2e8f0 25%,
+    #c084fc 55%,
+    #ffffff 80%,
+    #a855f7 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: finaleChrome 8s linear infinite;
+  filter: drop-shadow(0 0 40px rgba(168, 85, 247, 0.35));
+}
+
+@keyframes finaleChrome {
+  to {
+    background-position: 200% center;
+  }
+}
+
+.premium-finale__sub {
+  font-size: clamp(0.85rem, 2.5vw, 1rem);
+  color: rgba(255, 255, 255, 0.42);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.premium-finale__words {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px 20px;
+  font-family: var(--font-elegant, "Cormorant Garamond", serif);
+  font-style: italic;
+  font-size: clamp(1.1rem, 3vw, 1.45rem);
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.premium-finale__words span {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: finaleWordIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.premium-finale__words span:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.premium-finale__words span:nth-child(2) {
+  animation-delay: 0.25s;
+  color: rgba(192, 132, 252, 0.7);
+}
+.premium-finale__words span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes finaleWordIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.premium-finale__cta {
+  display: inline-flex;
+  margin-top: 40px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  color: #e2e8f0;
+  text-decoration: none;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition:
+    background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s,
+    transform 0.4s;
+}
+
+.premium-finale__cta:hover {
+  background: rgba(124, 58, 237, 0.25);
+  box-shadow: 0 0 32px rgba(168, 85, 247, 0.35);
+  transform: translateY(-2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .morph-divider__glow,
+  .premium-finale__aurora,
+  .premium-finale__title,
+  .premium-finale__words span {
+    animation: none;
+  }
+  .premium-finale__words span {
+    opacity: 1;
+    transform: none;
+  }
+}

@@ -4234,13 +4234,7 @@ body {
   position: relative;
 }
 
-#preloader {
-  display: none !important;
-}
-#preloader {
-  opacity: 1;
-  visibility: visible;
-}
+/* Preloader visibility handled in css/animations.css + js/preloader.js */
 
 .preloader-logo {
   animation: preloaderFloat 4s ease-in-out infinite;

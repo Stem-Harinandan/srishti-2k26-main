@@ -382,155 +382,7 @@ document.addEventListener("click", (e) => {
   }
 })();
 
-/* =========================================================
-   PRELOADER — FIXED VERSION
-========================================================= */
-
-const preloader = document.getElementById("preloader");
-const loaderPercent = document.querySelector(".loader-percent");
-const loaderBar = document.querySelector(".preloader-bar-fill");
-const loaderText = document.querySelector(".loader-text");
-const loaderMessages = ["INITIALIZING", "LOADING ASSETS", "CRAFTING CHAOS", "ALMOST THERE"];
-
-(function initPreloaderCanvas() {
-  const canvas = document.getElementById("preloaderCanvas");
-
-  if (!canvas) return;
-
-  const ctx = canvas.getContext("2d");
-
-  let w, h;
-  let animationFrame;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-
-  resize();
-
-  window.addEventListener("resize", resize);
-
-  let t = 0;
-
-  function render() {
-    ctx.clearRect(0, 0, w, h);
-
-    const cx = w / 2;
-    const cy = h / 2;
-
-    for (let i = 0; i < 4; i++) {
-      const radius = 120 + i * 34;
-
-      ctx.beginPath();
-
-      ctx.arc(
-        cx,
-        cy,
-        radius,
-        t * (0.3 + i * 0.05),
-        t * (0.3 + i * 0.05) + Math.PI * 1.4,
-      );
-
-      ctx.strokeStyle = `rgba(124,58,237,${0.05 - i * 0.01})`;
-
-      ctx.lineWidth = 1;
-
-      ctx.stroke();
-    }
-
-    t += 0.015;
-
-    animationFrame = requestAnimationFrame(render);
-  }
-
-  render();
-
-  window.stopPreloaderAnimation = () => {
-    cancelAnimationFrame(animationFrame);
-  };
-})();
-
-/* ============================================
-   LOADING SYSTEM
-============================================ */
-
-let progress = 0;
-
-const progressInterval = setInterval(() => {
-  /* MUCH SLOWER + SMOOTHER */
-  progress += Math.random() * 3 + 0.8;
-
-  /* slow down near end */
-  if (progress > 82) {
-    progress += Math.random() * 0.4;
-  }
-
-  if (progress > 96) {
-    progress = 96;
-  }
-
-  if (loaderPercent) {
-    loaderPercent.textContent = `${Math.floor(progress)}%`;
-  }
-
-  if (loaderBar) {
-    loaderBar.style.width = `${progress}%`;
-  }
-  if (loaderText) {
-    const idx = Math.min(loaderMessages.length - 1, Math.floor(progress / 28));
-    loaderText.textContent = loaderMessages[idx];
-  }
-}, 120);
-
-/* ============================================
-   FINISH PRELOADER
-============================================ */
-
-function finishPreloader() {
-  const preloader = document.getElementById("preloader");
-
-  if (!preloader) return;
-
-  preloader.classList.add("hidden");
-  document.body.classList.add("loaded");
-
-  setTimeout(() => {
-    if (preloader.parentNode) {
-      preloader.parentNode.removeChild(preloader);
-    }
-  }, 900);
-
-  document.body.style.overflowY = "auto";
-  document.documentElement.style.overflowY = "auto";
-
-  if (window.stopPreloaderAnimation) {
-    window.stopPreloaderAnimation();
-  }
-
-  /* hero stat counters removed in redesign */
-}
-
-/* ============================================
-   FAILSAFE
-============================================ */
-
-window.addEventListener("load", () => {
-  /* complete loading visually */
-  progress = 100;
-
-  if (loaderPercent) {
-    loaderPercent.textContent = "100%";
-  }
-
-  if (loaderBar) {
-    loaderBar.style.width = "100%";
-  }
-
-  setTimeout(() => {
-    finishPreloader();
-  }, 1200);
-});
+/* Preloader: see js/preloader.js (video intro) */
 
 (function initStoryStrip() {
   const panels = document.querySelectorAll(".story-panel");
@@ -1095,7 +947,7 @@ console.log(`
 (function initMagneticButtons() {
   if (window.matchMedia("(pointer: coarse)").matches) return;
 
-  const buttons = document.querySelectorAll(".btn, .icon-btn, .scroll-top-btn");
+  const buttons = document.querySelectorAll(".btn, .icon-btn, #backToTop");
   const ATTRACTION_RADIUS = 90;
   const STRENGTH = 0.38;
 
@@ -2099,28 +1951,7 @@ console.log(`
   setInterval(wrappedCountdown, 1000);
 })();
 
-/* =========================================================
-   SCROLL TO TOP BUTTON
-========================================================= */
-(function initScrollTop() {
-  const btn = document.createElement("button");
-  btn.className = "scroll-top-btn";
-  btn.innerHTML = "↑";
-  btn.title = "Back to top";
-  document.body.appendChild(btn);
-
-  window.addEventListener(
-    "scroll",
-    () => {
-      btn.classList.toggle("visible", window.scrollY > 600);
-    },
-    { passive: true },
-  );
-
-  btn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-})();
+/* Back to top: single #backToTop in index.html — see js/srishti-core.js */
 
 /* =========================================================
    NAV LINKS — stagger reveal on load
@@ -2531,21 +2362,13 @@ document.querySelectorAll(".section-title").forEach((el) => {
   // After preloader fades, if user hasn't scrolled yet,
   // gently auto-scroll to the story strip for the cinematic reveal
   let introPlayed = false;
-  const preloaderEl = document.getElementById("preloader");
-
-  function watchPreloader() {
-    if (!preloaderEl) return;
-    const obs = new MutationObserver(() => {
-      if (preloaderEl.classList.contains("hidden") && !introPlayed) {
-        introPlayed = true;
-        // Subtle pulsing background on first panel to draw attention
-        firstPanel.classList.add("story-intro-active");
-        obs.disconnect();
-      }
-    });
-    obs.observe(preloaderEl, { attributes: true, attributeFilter: ["class"] });
+  function playStoryIntro() {
+    if (introPlayed) return;
+    introPlayed = true;
+    firstPanel.classList.add("story-intro-active");
   }
-  watchPreloader();
+  window.addEventListener("srishti:preloader-done", playStoryIntro);
+  if (!document.getElementById("preloader")) playStoryIntro();
 })();
 
 /* ===== CINEMATIC MOTION PATCH ===== */
@@ -2697,59 +2520,20 @@ window.addEventListener(
   { passive: true },
 );
 
-setTimeout(() => {
-  const loader = document.getElementById("preloader");
-  if (loader) {
-    loader.classList.add("hidden");
-  }
-}, 4500);
-
 /* =========================================================
-   FORCE SCROLL SAFETY
+   FORCE SCROLL SAFETY (after preloader)
 ========================================================= */
 
-document.documentElement.style.overflowY = "auto";
-document.body.style.overflowY = "auto";
-
-window.addEventListener("wheel", () => {}, { passive: true });
-
-window.addEventListener("touchmove", () => {}, { passive: true });
-
-/* PRELOADER FAILSAFE */
-window.addEventListener("load", () => {
-  setTimeout(() => {
-    const preloader = document.getElementById("preloader");
-
-    if (preloader) {
-      preloader.classList.add("hidden");
-    }
-  }, 3500);
-});
-
-/* resize stability */
-window.addEventListener("resize", () => {
+window.addEventListener("srishti:preloader-done", () => {
+  document.documentElement.style.overflowY = "auto";
   document.body.style.overflowY = "auto";
 });
 
-/* prevent accidental scroll blocking */
-document.addEventListener("gesturestart", (e) => e.preventDefault());
+window.addEventListener("wheel", () => {}, { passive: true });
+window.addEventListener("touchmove", () => {}, { passive: true });
 
-/* =========================================================
-   NUCLEAR PRELOADER FAILSAFE
-========================================================= */
-
-window.addEventListener("DOMContentLoaded", () => {
-  setTimeout(() => {
-    const preloader = document.getElementById("preloader");
-
-    if (preloader) {
-      preloader.remove();
-    }
-
-    document.body.style.overflow = "auto";
+window.addEventListener("resize", () => {
+  if (!document.body.classList.contains("preloader-active")) {
     document.body.style.overflowY = "auto";
-
-    document.documentElement.style.overflow = "auto";
-    document.documentElement.style.overflowY = "auto";
-  }, 5000);
+  }
 });

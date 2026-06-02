@@ -28,6 +28,13 @@
     <meta name="twitter:description" content="Saraswathi Vidyalaya interschool cultural fest." />
     <meta name="twitter:image" content="https://srishti.eu.org/assets/logo.png" />
     <link rel="canonical" href="https://srishti.eu.org/" />
+    <link
+      rel="preload"
+      as="video"
+      href="media/video/logofirst6secs.mp4"
+      type="video/mp4"
+      fetchpriority="high"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -39,6 +46,7 @@
     <link rel="stylesheet" href="css/events-3d.css" />
     <link rel="stylesheet" href="css/legacy-wall.css" />
     <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/section-dividers.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -90,19 +98,25 @@
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
-    <!-- PRELOADER -->
-    <div id="preloader" aria-live="polite" aria-busy="true">
-      <canvas id="preloaderCanvas"></canvas>
-      <div class="preloader-inner">
-        <div class="preloader-logo-wrap">
-          <div class="preloader-ring" aria-hidden="true"></div>
-          <img src="assets/logo.png" alt="" class="preloader-logo" />
-        </div>
-        <div class="preloader-bar-track">
-          <div class="preloader-bar-fill"></div>
-        </div>
-        <p class="loader-text">INITIALIZING</p>
-        <div class="loader-percent">0%</div>
+    <!-- PRELOADER — logo intro video -->
+    <div id="preloader" aria-live="polite" aria-busy="true" aria-label="Loading">
+      <video
+        id="preloaderVideo"
+        class="preloader-video"
+        muted
+        playsinline
+        autoplay
+        preload="auto"
+        disablePictureInPicture
+        aria-hidden="true"
+      >
+        <source src="media/video/logofirst6secs.mp4" type="video/mp4" />
+        <source src="logofirst6secs.mp4" type="video/mp4" />
+      </video>
+      <div class="preloader-vignette" aria-hidden="true"></div>
+      <div class="preloader-fallback" id="preloaderFallback">
+        <img src="assets/logo.png" alt="Srishti" />
+        <p class="preloader-fallback-text">Loading experience</p>
       </div>
     </div>
 
@@ -233,15 +247,31 @@
       </div>
     </section>
 
-    <!-- HERO → ABOUT DIVIDER -->
-    <div class="section-divider">
-      <div class="divider-line"></div>
-      <div class="divider-badge">
-        <span class="divider-icon">◈</span>
-        <span class="divider-label">THE STORY</span>
-        <span class="divider-icon">◈</span>
+    <!-- Morph divider -->
+    <div class="morph-divider" aria-hidden="true">
+      <div class="morph-divider__glow"></div>
+      <svg class="morph-divider__svg" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="morphGradStory" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#6d28d9" stop-opacity="0" />
+            <stop offset="50%" stop-color="#c084fc" stop-opacity="0.4" />
+            <stop offset="100%" stop-color="#6d28d9" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path fill="url(#morphGradStory)" opacity="0.55">
+          <animate
+            attributeName="d"
+            dur="14s"
+            repeatCount="indefinite"
+            values="M0,36 C180,8 360,56 540,36 C720,16 900,48 1080,36 C1260,24 1380,40 1440,36 L1440,72 L0,72 Z;M0,44 C200,60 380,16 560,44 C740,56 920,28 1100,44 C1280,36 1380,48 1440,44 L1440,72 L0,72 Z;M0,36 C180,8 360,56 540,36 C720,16 900,48 1080,36 C1260,24 1380,40 1440,36 L1440,72 L0,72 Z"
+          />
+        </path>
+      </svg>
+      <div class="morph-divider__center">
+        <span class="morph-divider__line"></span>
+        <span class="morph-divider__label">THE STORY</span>
+        <span class="morph-divider__line"></span>
       </div>
-      <div class="divider-line"></div>
     </div>
 
     <!-- SCHOOL IDENTITY -->
@@ -295,6 +325,32 @@
       </div>
     </section>
 
+    <div class="morph-divider morph-divider--tight" aria-hidden="true">
+      <div class="morph-divider__glow"></div>
+      <svg class="morph-divider__svg" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="morphGradLegacy" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#7c3aed" stop-opacity="0" />
+            <stop offset="50%" stop-color="#a855f7" stop-opacity="0.35" />
+            <stop offset="100%" stop-color="#7c3aed" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path fill="url(#morphGradLegacy)" opacity="0.5">
+          <animate
+            attributeName="d"
+            dur="12s"
+            repeatCount="indefinite"
+            values="M0,40 C240,64 480,12 720,40 C960,56 1200,24 1440,40 L1440,72 L0,72 Z;M0,28 C240,12 480,52 720,28 C960,16 1200,44 1440,28 L1440,72 L0,72 Z;M0,40 C240,64 480,12 720,40 C960,56 1200,24 1440,40 L1440,72 L0,72 Z"
+          />
+        </path>
+      </svg>
+      <div class="morph-divider__center">
+        <span class="morph-divider__line"></span>
+        <span class="morph-divider__label">LEGACY</span>
+        <span class="morph-divider__line"></span>
+      </div>
+    </div>
+
     <!-- THE LEGACY WALL — SV achievements & past Srishti photos -->
     <section id="legacy" class="legacy-wall-section" aria-label="Legacy Wall">
       <canvas id="legacyWallParticles" aria-hidden="true"></canvas>
@@ -337,6 +393,32 @@
       </div>
     </section>
 
+    <div class="morph-divider morph-divider--tight" aria-hidden="true">
+      <div class="morph-divider__glow"></div>
+      <svg class="morph-divider__svg" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="morphGradEvents" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#9333ea" stop-opacity="0" />
+            <stop offset="50%" stop-color="#e879f9" stop-opacity="0.3" />
+            <stop offset="100%" stop-color="#9333ea" stop-opacity="0" />
+          </linearGradient>
+        </defs>
+        <path fill="url(#morphGradEvents)" opacity="0.48">
+          <animate
+            attributeName="d"
+            dur="10s"
+            repeatCount="indefinite"
+            values="M0,32 C320,56 640,8 960,32 C1120,44 1320,20 1440,32 L1440,72 L0,72 Z;M0,48 C320,20 640,60 960,48 C1120,36 1320,52 1440,48 L1440,72 L0,72 Z;M0,32 C320,56 640,8 960,32 C1120,44 1320,20 1440,32 L1440,72 L0,72 Z"
+          />
+        </path>
+      </svg>
+      <div class="morph-divider__center">
+        <span class="morph-divider__line"></span>
+        <span class="morph-divider__label">EVENT UNIVERSE</span>
+        <span class="morph-divider__line"></span>
+      </div>
+    </div>
+
     <!-- EVENTS — 3D UNIVERSE -->
     <section id="events" class="events-universe-section">
       <div class="section-header reveal">
@@ -368,6 +450,25 @@
       </div>
     </section>
 
+    <div class="morph-divider morph-divider--tight" aria-hidden="true">
+      <div class="morph-divider__glow"></div>
+      <svg class="morph-divider__svg" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="rgba(124,58,237,0.12)" opacity="0.9">
+          <animate
+            attributeName="d"
+            dur="11s"
+            repeatCount="indefinite"
+            values="M0,38 C360,60 720,16 1080,38 C1260,48 1380,32 1440,38 L1440,72 L0,72 Z;M0,26 C360,8 720,52 1080,26 C1260,18 1380,34 1440,26 L1440,72 L0,72 Z;M0,38 C360,60 720,16 1080,38 C1260,48 1380,32 1440,38 L1440,72 L0,72 Z"
+          />
+        </path>
+      </svg>
+      <div class="morph-divider__center">
+        <span class="morph-divider__line"></span>
+        <span class="morph-divider__label">ON SCREEN</span>
+        <span class="morph-divider__line"></span>
+      </div>
+    </div>
+
     <!-- TRAILER -->
     <section id="trailer" class="section">
       <div class="section-header reveal">
@@ -386,6 +487,25 @@
         </video>
       </div>
     </section>
+
+    <div class="morph-divider morph-divider--tight" aria-hidden="true">
+      <div class="morph-divider__glow"></div>
+      <svg class="morph-divider__svg" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
+        <path fill="rgba(168,85,247,0.15)" opacity="0.85">
+          <animate
+            attributeName="d"
+            dur="13s"
+            repeatCount="indefinite"
+            values="M0,34 C480,56 960,12 1440,34 L1440,72 L0,72 Z;M0,46 C480,18 960,58 1440,46 L1440,72 L0,72 Z;M0,34 C480,56 960,12 1440,34 L1440,72 L0,72 Z"
+          />
+        </path>
+      </svg>
+      <div class="morph-divider__center">
+        <span class="morph-divider__line"></span>
+        <span class="morph-divider__label">TRANSMISSION</span>
+        <span class="morph-divider__line"></span>
+      </div>
+    </div>
 
     <!-- COUNTDOWN -->
     <section id="countdown" class="section countdown-section">
@@ -415,13 +535,49 @@
       </div>
     </section>
 
+    <!-- Premium finale (closing beat — not an extra page section) -->
+    <div class="premium-finale" aria-labelledby="finaleTitle">
+      <div class="premium-finale__aurora" aria-hidden="true"></div>
+      <canvas id="finaleParticles" aria-hidden="true"></canvas>
+      <div class="morph-divider morph-divider--finale" aria-hidden="true">
+        <svg class="morph-divider__svg" viewBox="0 0 1440 56" preserveAspectRatio="none">
+          <path fill="#000" opacity="1">
+            <animate
+              attributeName="d"
+              dur="16s"
+              repeatCount="indefinite"
+              values="M0,28 C240,4 480,48 720,28 C960,8 1200,40 1440,28 L1440,56 L0,56 Z;M0,36 C240,52 480,12 720,36 C960,48 1200,20 1440,36 L1440,56 L0,56 Z;M0,28 C240,4 480,48 720,28 C960,8 1200,40 1440,28 L1440,56 L0,56 Z"
+            />
+          </path>
+          <path fill="rgba(124,58,237,0.2)" opacity="0.6">
+            <animate
+              attributeName="d"
+              dur="9s"
+              repeatCount="indefinite"
+              values="M0,20 C360,44 720,8 1080,20 C1260,28 1380,16 1440,20 L1440,56 L0,56 Z;M0,32 C360,12 720,40 1080,32 C1260,24 1380,36 1440,32 L1440,56 L0,56 Z;M0,20 C360,44 720,8 1080,20 C1260,28 1380,16 1440,20 L1440,56 L0,56 Z"
+            />
+          </path>
+        </svg>
+      </div>
+      <div class="premium-finale__inner reveal">
+        <p class="premium-finale__eyebrow">Srishti 2K26 · Finale</p>
+        <h2 id="finaleTitle" class="premium-finale__title">See You Inside</h2>
+        <p class="premium-finale__sub">Saraswathi Vidyalaya · Thiruvananthapuram</p>
+        <p class="premium-finale__words" aria-hidden="true">
+          <span>Crafted in chaos</span>
+          <span>·</span>
+          <span>Remembered in echoes</span>
+        </p>
+        <a href="#hero" class="premium-finale__cta">Return to the gate</a>
+      </div>
+    </div>
+
     <!-- FOOTER -->
     <footer id="contact" class="site-footer">
       <div class="footer-inner reveal">
         <div class="footer-brand-row">
-          <img src="assets/logo.png" alt="Srishti" class="footer-logo-sm" width="64" height="64" />
-          <h2 class="footer-tagline">See You Inside</h2>
-          <p class="footer-school-name">Saraswathi Vidyalaya · Thiruvananthapuram</p>
+          <img src="assets/logo.png" alt="Srishti" class="footer-logo-sm" width="56" height="56" />
+          <p class="footer-school-name">Connect · Follow · Stay in the loop</p>
         </div>
         <div class="footer-social-row">
           <a
@@ -457,7 +613,9 @@
 
     <div id="toast" role="status" aria-live="polite"></div>
 
-    <button type="button" id="backToTop" aria-label="Back to top">↑</button>
+    <button type="button" id="backToTop" class="back-to-top" aria-label="Back to top">
+      <span aria-hidden="true">↑</span>
+    </button>
 
     <audio id="bgMusic" loop>
       <source src="background-music.mp3" type="audio/mp3" />
@@ -471,11 +629,13 @@
     <audio id="clickSound">
       <source src="click.mp3" type="audio/mp3" />
     </audio>
+    <script src="js/preloader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
     <script src="js/script.js" defer></script>
     <script src="js/audio.js" defer></script>
     <script src="js/legacy-wall.js" defer></script>
     <script src="js/events-3d.js" defer></script>
+    <script src="js/section-dividers.js" defer></script>
     <script src="js/srishti-core.js" defer></script>
   </body>
 </html>

@@ -25,7 +25,8 @@ reveal/
 │   └── legacy-wall.css     # Legacy Wall photos
 │
 ├── js/                     # All scripts
-│   ├── script.js           # Core animations, preloader, scroll FX
+│   ├── preloader.js        # Video intro preloader
+│   ├── script.js           # Core animations, scroll FX
 │   ├── srishti-core.js     # Lenis, hero stars, story sky
 │   ├── events-3d.js        # 3D poster ring + mobile carousel
 │   ├── legacy-wall.js      # Legacy Wall gallery
@@ -129,6 +130,7 @@ Place in project **root** (default) or `media/` subfolders:
 
 | File | Purpose |
 |------|---------|
+| `media/video/logofirst6secs.mp4` | **Preloader intro** (6s logo video) |
 | `background.mp4` | Hero background video |
 | `trailer.mp4` | Trailer section |
 | `thumbnail.jpg` | Trailer poster |
