@@ -13,13 +13,32 @@
     />
     <link rel="icon" type="image/png" href="/assets/logo.png" />
     <link rel="apple-touch-icon" href="/assets/logo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <meta property="og:title" content="Srishti 2K26 | Interschool Cultural Fest" />
+    <meta
+      property="og:description"
+      content="Kerala's premium interschool cultural experience — music, performance, art and energy."
+    />
+    <meta property="og:image" content="https://srishti.eu.org/assets/logo.png" />
+    <meta property="og:url" content="https://srishti.eu.org/" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Srishti 2K26" />
+    <meta name="twitter:description" content="Saraswathi Vidyalaya interschool cultural fest." />
+    <meta name="twitter:image" content="https://srishti.eu.org/assets/logo.png" />
+    <link rel="canonical" href="https://srishti.eu.org/" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Unbounded:wght@200;400;700;900&family=Cormorant+Garamond:ital,wght@0,30OTH;1,6００&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Unbounded:wght@200;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;1,600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/srishti-redesign.css" />
+    <link rel="stylesheet" href="css/events-3d.css" />
+    <link rel="stylesheet" href="css/legacy-wall.css" />
+    <link rel="stylesheet" href="css/animations.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -50,7 +69,12 @@
       }
     </script>
   </head>
-  <body>
+  <body class="has-announce">
+    <a href="#heroContent" class="skip-link">Skip to main content</a>
+    <div class="announcement-bar" id="announcementBar" role="region" aria-label="Announcement">
+      <span><strong>Srishti 2K26</strong> — Gates open soon. Follow for live updates.</span>
+      <button type="button" class="announce-close" aria-label="Dismiss announcement">✕</button>
+    </div>
     <h1 class="seo-heading">
       Srishti 2K26 – Official Interschool Cultural Fest of Saraswathi Vidyalaya,
       Thiruvananthapuram
@@ -67,31 +91,35 @@
     <div class="cursor-ring"></div>
 
     <!-- PRELOADER -->
-    <div id="preloader">
+    <div id="preloader" aria-live="polite" aria-busy="true">
       <canvas id="preloaderCanvas"></canvas>
-      <img src="assets/logo.png" alt="Srishti" class="preloader-logo" />
-      <div class="loader-line-wrap"><div class="loader-line"></div></div>
-      <p class="loader-text">INITIALIZING EXPERIENCE</p>
-      <div class="loader-percent">0%</div>
+      <div class="preloader-inner">
+        <div class="preloader-logo-wrap">
+          <div class="preloader-ring" aria-hidden="true"></div>
+          <img src="assets/logo.png" alt="" class="preloader-logo" />
+        </div>
+        <div class="preloader-bar-track">
+          <div class="preloader-bar-fill"></div>
+        </div>
+        <p class="loader-text">INITIALIZING</p>
+        <div class="loader-percent">0%</div>
+      </div>
     </div>
 
     <!-- NAVBAR -->
-    <nav id="navbar">
-      <a href="#" class="nav-brand"><img src="assets/logo.png" alt="Srishti" /></a>
+    <nav id="navbar" aria-label="Main navigation">
+      <a href="#" class="nav-brand"><img src="assets/logo.png" alt="Srishti 2K26 home" width="140" height="48" /></a>
       <div class="nav-links">
         <a href="#about">About</a>
+        <a href="#legacy">Legacy</a>
         <a href="#events">Events</a>
-        <a href="#schedule">Schedule</a>
         <a href="#trailer">Trailer</a>
-        <a href="#schools">Schools</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#team">Team</a>
         <a href="#countdown">Countdown</a>
         <a href="#contact">Contact</a>
       </div>
       <div class="nav-actions">
-        <button id="audioToggle" class="icon-btn">♫</button>
-        <button class="hamburger" id="hamburger">
+        <button id="audioToggle" class="icon-btn" type="button" aria-label="Toggle ambient audio">♫</button>
+        <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-expanded="false">
           <span></span><span></span><span></span>
         </button>
       </div>
@@ -102,18 +130,16 @@
     <aside class="mobile-menu" id="mobileMenu">
       <button class="mobile-close" id="mobileClose">✕</button>
       <a href="#about" class="mobile-link">About</a>
+      <a href="#legacy" class="mobile-link">Legacy</a>
       <a href="#events" class="mobile-link">Events</a>
-      <a href="#schedule" class="mobile-link">Schedule</a>
       <a href="#trailer" class="mobile-link">Trailer</a>
-      <a href="#schools" class="mobile-link">Schools</a>
-      <a href="#gallery" class="mobile-link">Gallery</a>
-      <a href="#team" class="mobile-link">Team</a>
       <a href="#countdown" class="mobile-link">Countdown</a>
       <a href="#contact" class="mobile-link">Contact</a>
     </aside>
 
     <!-- HERO -->
-    <section class="hero">
+    <section class="hero" id="hero">
+      <canvas id="heroStarsCanvas" aria-hidden="true"></canvas>
       <canvas id="heroGalaxyCanvas"></canvas>
       <canvas id="torchCanvas"></canvas>
       <video autoplay muted loop playsinline class="hero-video">
@@ -161,24 +187,6 @@
           <a href="#events" class="btn btn-primary">Explore Events</a>
           <a href="#trailer" class="btn btn-secondary">Watch Trailer</a>
         </div>
-        <div class="hero-stats">
-          <div class="hero-stat">
-            <h3 data-count="10">0</h3>
-            <p>Events</p>
-          </div>
-          <div class="hero-stat">
-            <h3>∞</h3>
-            <p>Energy</p>
-          </div>
-          <div class="hero-stat">
-            <h3 data-count="3">0</h3>
-            <p>Days</p>
-          </div>
-          <div class="hero-stat">
-            <h3 data-count="500">0</h3>
-            <p>Participants</p>
-          </div>
-        </div>
       </div>
       <div class="parallax-layer layer-back" id="layerBack"></div>
       <div class="parallax-layer layer-mid" id="layerMid"></div>
@@ -189,7 +197,8 @@
     </section>
 
     <!-- CINEMATIC STORY STRIP (Lando-style scroll reveal) -->
-    <section class="story-strip">
+    <section class="story-strip" aria-label="Brand story">
+      <canvas id="storySkyCanvas" aria-hidden="true"></canvas>
       <div class="story-panel" data-story="0">
         <div class="story-line">
           <span class="story-word">IT</span>
@@ -286,232 +295,76 @@
       </div>
     </section>
 
-    <!-- LEGACY MARQUEE -->
-    <section class="legacy-marquee-section">
-      <div class="legacy-track-wrap">
-        <div class="legacy-track" id="legacyTrack">
-          <span class="legacy-word">CHAOS</span>
-          <span class="legacy-word">·</span>
-          <span class="legacy-word">LEGACY</span>
-          <span class="legacy-word">·</span>
-          <span class="legacy-word">ENERGY</span>
-          <span class="legacy-word">·</span>
-          <span class="legacy-word">VISION</span>
-          <span class="legacy-word">·</span>
-          <span class="legacy-word">CHAOS</span>
-          <span class="legacy-word">·</span>
-          <span class="legacy-word">LEGACY</span>
-          <span class="legacy-word">·</span>
-          <span class="legacy-word">ENERGY</span>
-          <span class="legacy-word">·</span>
-          <span class="legacy-word">VISION</span>
-          <span class="legacy-word">·</span>
+    <!-- THE LEGACY WALL — SV achievements & past Srishti photos -->
+    <section id="legacy" class="legacy-wall-section" aria-label="Legacy Wall">
+      <canvas id="legacyWallParticles" aria-hidden="true"></canvas>
+      <div class="section-header reveal">
+        <p class="section-tag">SARASWATHI VIDYALAYA · SRISHTI</p>
+        <h2 class="section-title">The Legacy Wall</h2>
+        <p class="legacy-wall-intro reveal">
+          A living archive of school achievements, past Srishti editions, and the moments that built this legacy.
+        </p>
+      </div>
+
+      <div class="legacy-filters reveal" role="tablist" aria-label="Filter memories">
+        <button type="button" class="legacy-filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button type="button" class="legacy-filter-btn" data-filter="achievements" role="tab" aria-selected="false">SV Achievements</button>
+        <button type="button" class="legacy-filter-btn" data-filter="srishti" role="tab" aria-selected="false">Past Srishti</button>
+        <button type="button" class="legacy-filter-btn" data-filter="moments" role="tab" aria-selected="false">Campus Moments</button>
+      </div>
+
+      <div class="legacy-spotlight reveal" id="legacySpotlight" aria-live="polite"></div>
+
+      <div class="legacy-masonry reveal" id="legacyMasonry" role="list"></div>
+
+      <p class="legacy-filmstrip-label reveal">Memory reel</p>
+      <div class="legacy-filmstrip reveal" aria-hidden="true">
+        <div class="legacy-filmstrip-track" id="legacyFilmstripTrack"></div>
+      </div>
+
+      <div class="legacy-lightbox" id="legacyLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo viewer">
+        <div class="legacy-lightbox-backdrop"></div>
+        <button type="button" class="legacy-lightbox-close" aria-label="Close">✕</button>
+        <button type="button" class="legacy-lightbox-prev" aria-label="Previous photo">‹</button>
+        <button type="button" class="legacy-lightbox-next" aria-label="Next photo">›</button>
+        <div class="legacy-lightbox-content">
+          <img src="" alt="" />
+          <div class="legacy-lightbox-info">
+            <h3></h3>
+            <p></p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- EVENTS -->
-    <section id="events" class="section">
+    <!-- EVENTS — 3D UNIVERSE -->
+    <section id="events" class="events-universe-section">
       <div class="section-header reveal">
         <p class="section-tag">FEATURED EXPERIENCES</p>
-        <h2 class="section-title">Events</h2>
+        <h2 class="section-title">Event Universe</h2>
+        <p class="section-subtitle reveal" style="margin-top:12px;color:#9ca3af;max-width:480px;margin-inline:auto">
+          Swipe on mobile · drag the ring on desktop
+        </p>
       </div>
-      <div class="events-slider-wrap">
-        <div class="events-grid" id="eventsGrid">
-          <article class="event-card reveal">
-            <div class="event-card-glow"></div>
-            <div class="event-number">01</div>
-            <div class="event-content">
-              <span class="event-category">FILM</span>
-              <h3>Cini Opsis</h3>
-              <p>
-                Cinematic storytelling, visual perception and immersive frame
-                construction.
-              </p>
-              <div class="event-meta">
-                <span>Auditorium</span><span>2 Hours</span>
-              </div>
-            </div>
-          </article>
-          <article class="event-card reveal">
-            <div class="event-card-glow"></div>
-            <div class="event-number">02</div>
-            <div class="event-content">
-              <span class="event-category">MUSIC</span>
-              <h3>Euphony</h3>
-              <p>A collision of rhythm, vocals and live stage energy.</p>
-              <div class="event-meta">
-                <span>Main Stage</span><span>3 Hours</span>
-              </div>
-            </div>
-          </article>
-          <article class="event-card reveal">
-            <div class="event-card-glow"></div>
-            <div class="event-number">03</div>
-            <div class="event-content">
-              <span class="event-category">MYSTERY</span>
-              <h3>221B Baker Street</h3>
-              <p>Deduction, suspense and investigation under pressure.</p>
-              <div class="event-meta">
-                <span>Lab Block</span><span>90 Minutes</span>
-              </div>
-            </div>
-          </article>
-          <article class="event-card reveal">
-            <div class="event-card-glow"></div>
-            <div class="event-number">04</div>
-            <div class="event-content">
-              <span class="event-category">FASHION</span>
-              <h3>Facere</h3>
-              <p>Experimental fashion, movement and visual identity.</p>
-              <div class="event-meta">
-                <span>Ramp Stage</span><span>2 Hours</span>
-              </div>
-            </div>
-          </article>
-          <article class="event-card reveal">
-            <div class="event-card-glow"></div>
-            <div class="event-number">05</div>
-            <div class="event-content">
-              <span class="event-category">ART</span>
-              <h3>Chroma Clash</h3>
-              <p>Fast paced live art battles driven by instinct and speed.</p>
-              <div class="event-meta">
-                <span>Art Block</span><span>2 Hours</span>
-              </div>
-            </div>
-          </article>
-          <article class="event-card reveal">
-            <div class="event-card-glow"></div>
-            <div class="event-number">06</div>
-            <div class="event-content">
-              <span class="event-category">DANCE</span>
-              <h3>Vortex</h3>
-              <p>High intensity choreography and synchronized movement.</p>
-              <div class="event-meta">
-                <span>Main Stage</span><span>3 Hours</span>
-              </div>
-            </div>
-          </article>
+      <div class="events-universe">
+        <canvas id="eventsParticles" aria-hidden="true"></canvas>
+        <div class="events-stage">
+          <div class="events-ring" id="eventsRing"></div>
         </div>
-        <div class="events-dots" id="eventsDots"></div>
-      </div>
-    </section>
-
-    <!-- SCHEDULE -->
-    <section id="schedule" class="section">
-      <div class="section-header reveal">
-        <p class="section-tag">PROGRAM FLOW</p>
-        <h2 class="section-title">Schedule</h2>
-      </div>
-      <div class="schedule-wrapper reveal">
-        <div class="schedule-tabs">
-          <button class="tab-btn active" data-day="1">Day 01</button>
-          <button class="tab-btn" data-day="2">Day 02</button>
-          <button class="tab-btn" data-day="3">Day 03</button>
+        <div class="events-mobile-wrap">
+          <div class="events-mobile-track" id="eventsMobileTrack"></div>
+          <div class="events-mobile-dots" id="eventsMobileDots"></div>
         </div>
-        <div class="schedule-day active" data-day="1">
-          <div class="schedule-item">
-            <div class="schedule-time-col">
-              <div class="sch-time">09:00</div>
-              <div class="sch-ampm">AM</div>
-            </div>
-            <div class="sch-dot-col">
-              <div class="sch-dot"></div>
-              <div class="sch-connector"></div>
-            </div>
-            <div class="schedule-info">
-              <h4>Opening Ceremony</h4>
-              <p>Main Auditorium · All participants</p>
-              <div class="sch-tag">CEREMONY</div>
-            </div>
+        <div class="events-hud">
+          <button type="button" class="eu-nav eu-prev" aria-label="Previous event">‹</button>
+          <div class="eu-info">
+            <span class="eu-index">01 / 06</span>
+            <h3 class="eu-title">Cini Opsis</h3>
+            <p class="eu-desc">Cinematic storytelling and immersive visual craft.</p>
           </div>
-          <div class="schedule-item">
-            <div class="schedule-time-col">
-              <div class="sch-time">11:00</div>
-              <div class="sch-ampm">AM</div>
-            </div>
-            <div class="sch-dot-col">
-              <div class="sch-dot"></div>
-              <div class="sch-connector"></div>
-            </div>
-            <div class="schedule-info">
-              <h4>Cini Opsis Heats</h4>
-              <p>Film Arena · Group A &amp; B</p>
-              <div class="sch-tag">FILM</div>
-            </div>
-          </div>
-          <div class="schedule-item last">
-            <div class="schedule-time-col">
-              <div class="sch-time">02:00</div>
-              <div class="sch-ampm">PM</div>
-            </div>
-            <div class="sch-dot-col"><div class="sch-dot"></div></div>
-            <div class="schedule-info">
-              <h4>Mystery Round</h4>
-              <p>Lab Block · Teams of 4</p>
-              <div class="sch-tag">MYSTERY</div>
-            </div>
-          </div>
+          <button type="button" class="eu-nav eu-next" aria-label="Next event">›</button>
         </div>
-        <div class="schedule-day" data-day="2">
-          <div class="schedule-item">
-            <div class="schedule-time-col">
-              <div class="sch-time">10:00</div>
-              <div class="sch-ampm">AM</div>
-            </div>
-            <div class="sch-dot-col">
-              <div class="sch-dot"></div>
-              <div class="sch-connector"></div>
-            </div>
-            <div class="schedule-info">
-              <h4>Euphony</h4>
-              <p>Main Stage · Open Category</p>
-              <div class="sch-tag">MUSIC</div>
-            </div>
-          </div>
-          <div class="schedule-item last">
-            <div class="schedule-time-col">
-              <div class="sch-time">01:00</div>
-              <div class="sch-ampm">PM</div>
-            </div>
-            <div class="sch-dot-col"><div class="sch-dot"></div></div>
-            <div class="schedule-info">
-              <h4>Vortex</h4>
-              <p>Dance Arena · All Styles</p>
-              <div class="sch-tag">DANCE</div>
-            </div>
-          </div>
-        </div>
-        <div class="schedule-day" data-day="3">
-          <div class="schedule-item">
-            <div class="schedule-time-col">
-              <div class="sch-time">11:00</div>
-              <div class="sch-ampm">AM</div>
-            </div>
-            <div class="sch-dot-col">
-              <div class="sch-dot"></div>
-              <div class="sch-connector"></div>
-            </div>
-            <div class="schedule-info">
-              <h4>Grand Finals</h4>
-              <p>Main Stage · All Categories</p>
-              <div class="sch-tag">FINALS</div>
-            </div>
-          </div>
-          <div class="schedule-item last">
-            <div class="schedule-time-col">
-              <div class="sch-time">05:00</div>
-              <div class="sch-ampm">PM</div>
-            </div>
-            <div class="sch-dot-col"><div class="sch-dot"></div></div>
-            <div class="schedule-info">
-              <h4>Closing Ceremony</h4>
-              <p>Main Auditorium · Prize Distribution</p>
-              <div class="sch-tag">CEREMONY</div>
-            </div>
-          </div>
-        </div>
+        <p class="events-hint">Swipe · Drag · Explore</p>
       </div>
     </section>
 
@@ -531,240 +384,6 @@
         >
           <source src="trailer.mp4" type="video/mp4" />
         </video>
-      </div>
-    </section>
-
-    <!-- PARTICIPATING SCHOOLS — horizontal rolling strip -->
-    <section id="schools" class="section schools-section">
-      <div class="section-header reveal">
-        <p class="section-tag">COMPETING SCHOOLS</p>
-        <h2 class="section-title">The Arena</h2>
-        <p class="section-subtitle reveal">
-          Schools stepping into Srishti 2K26
-        </p>
-      </div>
-      <div class="schools-rail-wrap">
-        <div class="schools-rail" id="schoolsRail">
-          <!-- Row 1 — scrolls left -->
-          <div class="schools-track schools-track-left" id="schoolsTrack1">
-            <div class="school-card">
-              <span class="school-card-num">01</span
-              ><span class="school-card-name">Saraswathy Vidhyalaya</span
-              ><span class="school-card-loc">Kodungallur</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">02</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">03</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">04</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">05</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">06</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <!-- duplicated for seamless loop -->
-            <div class="school-card">
-              <span class="school-card-num">01</span
-              ><span class="school-card-name">Saraswathy Vidhyalaya</span
-              ><span class="school-card-loc">Kodungallur</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">02</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">03</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">04</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">05</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card">
-              <span class="school-card-num">06</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-          </div>
-          <!-- Row 2 — scrolls right (reverse) -->
-          <div class="schools-track schools-track-right" id="schoolsTrack2">
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">07</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">08</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">09</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">10</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">11</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">12</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <!-- duplicated -->
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">07</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">08</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">09</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">10</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">11</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-            <div class="school-card school-card-alt">
-              <span class="school-card-num">12</span
-              ><span class="school-card-name">School Name Here</span
-              ><span class="school-card-loc">Location</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section id="gallery" class="section">
-      <div class="section-header reveal">
-        <p class="section-tag">MOMENTS</p>
-        <h2 class="section-title">Gallery</h2>
-      </div>
-      <div class="gallery-grid">
-        <div class="gallery-item reveal"></div>
-        <div class="gallery-item reveal"></div>
-        <div class="gallery-item reveal"></div>
-        <div class="gallery-item reveal"></div>
-        <div class="gallery-item reveal"></div>
-        <div class="gallery-item reveal"></div>
-      </div>
-    </section>
-
-    <!-- PEOPLE BEHIND SRISHTI (renamed from Sponsors) -->
-    <section id="team" class="section team-section">
-      <div class="section-header reveal">
-        <p class="section-tag">THE MAKERS</p>
-        <h2 class="section-title">People Behind Srishti</h2>
-      </div>
-      <div class="team-tiers reveal">
-        <!-- Faculty -->
-        <div class="team-tier">
-          <div class="tier-label">FACULTY COORDINATORS</div>
-          <div class="team-row">
-            <div class="team-card">
-              <div class="team-avatar"></div>
-              <div class="team-name">Faculty Name</div>
-              <div class="team-role">Event Coordinator</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar"></div>
-              <div class="team-name">Faculty Name</div>
-              <div class="team-role">Event Coordinator</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar"></div>
-              <div class="team-name">Faculty Name</div>
-              <div class="team-role">Event Coordinator</div>
-            </div>
-          </div>
-        </div>
-        <!-- Student Council -->
-        <div class="team-tier">
-          <div class="tier-label">STUDENT COUNCIL</div>
-          <div class="team-row">
-            <div class="team-card">
-              <div class="team-avatar"></div>
-              <div class="team-name">Student Name</div>
-              <div class="team-role">Organizing Head</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar"></div>
-              <div class="team-name">Student Name</div>
-              <div class="team-role">Creative Head</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar"></div>
-              <div class="team-name">Student Name</div>
-              <div class="team-role">Technical Head</div>
-            </div>
-            <div class="team-card">
-              <div class="team-avatar"></div>
-              <div class="team-name">Student Name</div>
-              <div class="team-role">Design Head</div>
-            </div>
-          </div>
-        </div>
-        <!-- Sponsors kept below as supporters -->
-        <div class="team-tier">
-          <div class="tier-label">PROUDLY SUPPORTED BY</div>
-          <div class="team-row">
-            <div class="sponsor-card sponsor-title">
-              <div class="sponsor-logo-placeholder">YOUR LOGO</div>
-              <div class="sponsor-name">Title Sponsor</div>
-            </div>
-            <div class="sponsor-card">
-              <div class="sponsor-logo-placeholder">LOGO</div>
-              <div class="sponsor-name">Co-Sponsor</div>
-            </div>
-            <div class="sponsor-card">
-              <div class="sponsor-logo-placeholder">LOGO</div>
-              <div class="sponsor-name">Co-Sponsor</div>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
@@ -797,53 +416,48 @@
     </section>
 
     <!-- FOOTER -->
-    <footer id="contact">
-      <div class="footer-glow"></div>
-      <div class="footer-content">
-        <p class="footer-school reveal">
-          Saraswathy Vidhyalaya Higher Secondary School
-        </p>
-        <img src="assets/logo.png" alt="Srishti" class="footer-logo reveal" />
-        <h2 class="footer-title reveal">See You Inside</h2>
-        <p class="footer-text reveal">The gates open soon.</p>
-        <div class="footer-socials reveal">
-          <a href="#">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
+    <footer id="contact" class="site-footer">
+      <div class="footer-inner reveal">
+        <div class="footer-brand-row">
+          <img src="assets/logo.png" alt="Srishti" class="footer-logo-sm" width="64" height="64" />
+          <h2 class="footer-tagline">See You Inside</h2>
+          <p class="footer-school-name">Saraswathi Vidyalaya · Thiruvananthapuram</p>
+        </div>
+        <div class="footer-social-row">
+          <a
+            href="https://www.instagram.com/"
+            class="footer-social-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
-                d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a5.507 5.507 0 0 0-1.99 1.3A5.507 5.507 0 0 0 .42 3.71c-.198.509-.332 1.09-.372 1.943C.01 6.506 0 6.779 0 8c0 1.221.01 1.494.048 2.347.04.853.174 1.434.372 1.943.214.55.502 1.018.85 1.367.349.348.817.636 1.367.85.509.198 1.09.332 1.943.372C6.506 15.99 6.779 16 8 16c1.221 0 1.494-.01 2.347-.048.853-.04 1.434-.174 1.943-.372a5.507 5.507 0 0 0 1.367-.85 5.507 5.507 0 0 0 .85-1.367c.198-.509.332-1.09.372-1.943C15.99 9.494 16 9.221 16 8c0-1.221-.01-1.494-.048-2.347-.04-.853-.174-1.434-.372-1.943a5.507 5.507 0 0 0-.85-1.367 5.507 5.507 0 0 0-1.367-.85c-.509-.198-1.09-.332-1.943-.372C9.494.01 9.221 0 8 0Z"
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"
               />
             </svg>
-            Instagram
           </a>
-          <a href="#">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="20"
-              height="20"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-            >
+          <a
+            href="https://www.youtube.com/"
+            class="footer-social-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
               <path
-                d="M8.051 1.999h-.003C3.58 2 2 3.58 2 8.048v-.001C2 12.42 3.58 14 8.048 14h-.001C12.42 14 14 12.42 14 7.952v.001C14 3.58 12.42 2 8.051 2Zm3.976 6.233-5.84 2.728A.5.5 0 0 1 5.5 10.5v-5a.5.5 0 0 1 .687-.46l5.84 2.272a.5.5 0 0 1 0 .92Z"
+                d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"
               />
             </svg>
-            YouTube
           </a>
         </div>
-        <div class="footer-bottom reveal">
-          <p>© Srishti 2K26 · Saraswathy Vidhyalaya · All rights reserved</p>
-          <p>Crafted In Chaos · Remembered In Echoes</p>
-        </div>
+        <p class="footer-legal">© Srishti 2K26 · Crafted In Chaos · Remembered In Echoes</p>
       </div>
     </footer>
 
-    <div id="toast"></div>
+    <div id="toast" role="status" aria-live="polite"></div>
+
+    <button type="button" id="backToTop" aria-label="Back to top">↑</button>
 
     <audio id="bgMusic" loop>
       <source src="background-music.mp3" type="audio/mp3" />
@@ -851,7 +465,17 @@
     <audio id="revealSound">
       <source src="reveal.mp3" type="audio/mp3" />
     </audio>
-
-    <script src="script.js"></script>
+    <audio id="hoverSound">
+      <source src="hover.mp3" type="audio/mp3" />
+    </audio>
+    <audio id="clickSound">
+      <source src="click.mp3" type="audio/mp3" />
+    </audio>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/audio.js" defer></script>
+    <script src="js/legacy-wall.js" defer></script>
+    <script src="js/events-3d.js" defer></script>
+    <script src="js/srishti-core.js" defer></script>
   </body>
 </html>

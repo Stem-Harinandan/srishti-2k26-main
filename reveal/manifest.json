@@ -1,0 +1,24 @@
+{
+  "name": "Srishti 2K26",
+  "short_name": "Srishti",
+  "description": "Saraswathi Vidyalaya Interschool Cultural Fest — Thiruvananthapuram",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#7c3aed",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/assets/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

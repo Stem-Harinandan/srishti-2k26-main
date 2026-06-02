@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "file": "achievement-01.jpg",
+      "category": "achievements",
+      "title": "Excellence in Culture",
+      "year": "2024",
+      "caption": "Saraswathi Vidyalaya — district recognition"
+    },
+    {
+      "file": "srishti-01.jpg",
+      "category": "srishti",
+      "title": "Srishti Main Stage",
+      "year": "2024",
+      "caption": "Opening night energy"
+    },
+    {
+      "file": "moment-01.jpg",
+      "category": "moments",
+      "title": "Campus Spirit",
+      "year": "2025",
+      "caption": "Behind the scenes"
+    }
+  ]
+}

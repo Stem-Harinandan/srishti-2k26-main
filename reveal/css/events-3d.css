@@ -1,0 +1,335 @@
+/* =========================================================
+   EVENTS UNIVERSE — 3D poster ring
+========================================================= */
+.events-universe-section {
+  position: relative;
+  padding: 100px 0 120px;
+  background: #000;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.events-universe-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 40%, rgba(109, 40, 217, 0.18), transparent 65%),
+    radial-gradient(ellipse 40% 30% at 20% 80%, rgba(192, 132, 252, 0.08), transparent),
+    radial-gradient(ellipse 40% 30% at 80% 20%, rgba(147, 51, 234, 0.1), transparent);
+  pointer-events: none;
+}
+
+#eventsParticles {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.events-universe {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  z-index: 2;
+  padding: 0 5vw;
+}
+
+.events-stage {
+  perspective: 1400px;
+  perspective-origin: 50% 42%;
+  height: min(72vh, 620px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  cursor: grab;
+}
+
+.events-stage.is-dragging {
+  cursor: grabbing;
+}
+
+.events-ring {
+  position: relative;
+  width: 220px;
+  height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.1s linear;
+  will-change: transform;
+}
+
+.events-ring.no-transition {
+  transition: none;
+}
+
+.event-poster-3d {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: clamp(160px, 22vw, 240px);
+  height: clamp(220px, 30vw, 330px);
+  margin-left: calc(clamp(160px, 22vw, 240px) / -2);
+  margin-top: calc(clamp(220px, 30vw, 330px) / -2);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  cursor: pointer;
+  transition:
+    filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.4s;
+}
+
+.event-poster-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(145deg, #0c0c12, #1a0a2e);
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(168, 85, 247, 0.1);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.35s;
+}
+
+.event-poster-3d img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.event-poster-3d .poster-fallback-num {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display, "Unbounded", sans-serif);
+  font-size: 3.5rem;
+  color: rgba(168, 85, 247, 0.2);
+}
+
+.event-poster-3d .poster-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.12) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: 16px;
+}
+
+.event-poster-3d.is-front .event-poster-inner {
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.8),
+    0 0 60px rgba(124, 58, 237, 0.35),
+    0 0 0 1px rgba(196, 132, 252, 0.35);
+  border-color: rgba(196, 132, 252, 0.4);
+}
+
+.event-poster-3d.is-front .poster-shine {
+  opacity: 1;
+}
+
+.event-poster-3d:not(.is-front) {
+  opacity: 0.55;
+  filter: brightness(0.65) saturate(0.8);
+}
+
+.event-poster-3d:hover:not(.is-front) {
+  opacity: 0.85;
+  filter: brightness(0.9);
+}
+
+.events-hud {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.eu-nav {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid rgba(168, 85, 247, 0.35);
+  background: rgba(0, 0, 0, 0.6);
+  color: #c084fc;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.eu-nav:hover {
+  background: rgba(124, 58, 237, 0.35);
+  box-shadow: 0 0 24px rgba(124, 58, 237, 0.4);
+}
+
+.eu-info {
+  min-width: 200px;
+  max-width: 420px;
+}
+
+.eu-index {
+  font-size: 0.7rem;
+  letter-spacing: 0.25em;
+  color: #a855f7;
+  font-family: var(--font-mono, monospace);
+}
+
+.eu-title {
+  font-family: var(--font-display, "Unbounded", sans-serif);
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  margin-top: 8px;
+  background: linear-gradient(135deg, #fff, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.eu-desc {
+  margin-top: 10px;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.events-hint {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.event-poster-inner.poster-pulse {
+  animation: posterPulse 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes posterPulse {
+  0% {
+    transform: scale(1);
+  }
+  40% {
+    transform: scale(1.06);
+    box-shadow: 0 0 50px rgba(124, 58, 237, 0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Mobile carousel */
+.events-mobile-wrap {
+  display: none;
+  width: 100%;
+  padding: 0 0 8px;
+}
+
+.events-universe.is-mobile .events-stage {
+  display: none;
+}
+
+.events-universe.is-mobile .events-mobile-wrap {
+  display: block;
+}
+
+.events-mobile-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 8px 5vw 24px;
+  scrollbar-width: none;
+}
+
+.events-mobile-track::-webkit-scrollbar {
+  display: none;
+}
+
+.events-mobile-slide {
+  flex: 0 0 min(78vw, 280px);
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+
+.events-mobile-slide .event-poster-inner {
+  height: min(58vh, 400px);
+  min-height: 320px;
+}
+
+.events-mobile-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.events-mobile-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.events-mobile-dot.active {
+  width: 24px;
+  border-radius: 999px;
+  background: #c084fc;
+}
+
+@media (max-width: 768px) {
+  .events-universe-section {
+    min-height: auto;
+    padding: 80px 0 60px;
+  }
+
+  .events-hud {
+    margin-top: 24px;
+    gap: 12px;
+  }
+
+  .eu-nav {
+    width: 44px;
+    height: 44px;
+  }
+
+  .eu-info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  .eu-title {
+    font-size: 1.25rem;
+  }
+
+  .eu-desc {
+    font-size: 0.85rem;
+  }
+}

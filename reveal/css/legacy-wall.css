@@ -1,0 +1,523 @@
+/* =========================================================
+   THE LEGACY WALL — achievements & past Srishti photos
+========================================================= */
+.legacy-wall-section {
+  position: relative;
+  padding: 100px 0 80px;
+  background: #000;
+  overflow: hidden;
+  border-top: 1px solid rgba(168, 85, 247, 0.12);
+}
+
+.legacy-wall-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 50% at 50% 20%, rgba(109, 40, 217, 0.12), transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+#legacyWallParticles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.legacy-wall-section .section-header {
+  position: relative;
+  z-index: 3;
+}
+
+.legacy-wall-intro {
+  max-width: 560px;
+  margin: 12px auto 0;
+  color: #9ca3af;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  padding: 0 5vw;
+}
+
+/* Filters */
+.legacy-filters {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 36px auto 32px;
+  padding: 0 5vw;
+}
+
+.legacy-filter-btn {
+  padding: 12px 22px;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
+  color: #9ca3af;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: var(--font-body, sans-serif);
+}
+
+.legacy-filter-btn.active,
+.legacy-filter-btn:hover {
+  color: #fff;
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(124, 58, 237, 0.25);
+  box-shadow: 0 0 28px rgba(124, 58, 237, 0.2);
+}
+
+/* Spotlight — featured memory */
+.legacy-spotlight {
+  position: relative;
+  z-index: 3;
+  max-width: 900px;
+  margin: 0 auto 48px;
+  padding: 0 5vw;
+}
+
+.legacy-spotlight-inner {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(196, 132, 252, 0.25);
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.7),
+    0 0 80px rgba(124, 58, 237, 0.15);
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(145deg, #0a0a0f, #1a0a2e);
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease-out;
+}
+
+.legacy-spotlight-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.legacy-spotlight-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(196, 132, 252, 0.35);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.legacy-spotlight-placeholder svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.4;
+}
+
+.legacy-spotlight-caption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 28px 24px 20px;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.92));
+  z-index: 2;
+}
+
+.legacy-spotlight-year {
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: #c084fc;
+  text-transform: uppercase;
+}
+
+.legacy-spotlight-title {
+  font-family: var(--font-display, "Unbounded", sans-serif);
+  font-size: clamp(1.25rem, 4vw, 1.75rem);
+  margin-top: 6px;
+  color: #fff;
+}
+
+.legacy-spotlight-desc {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.legacy-spotlight-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(12px);
+  color: #e2e8f0;
+}
+
+.legacy-spotlight-badge.achievements {
+  border-color: rgba(250, 204, 21, 0.35);
+  color: #fde68a;
+}
+
+.legacy-spotlight-badge.srishti {
+  border-color: rgba(196, 132, 252, 0.4);
+  color: #e9d5ff;
+}
+
+/* Masonry collage */
+.legacy-masonry {
+  position: relative;
+  z-index: 3;
+  columns: 2;
+  column-gap: 14px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+@media (min-width: 640px) {
+  .legacy-masonry {
+    columns: 3;
+    column-gap: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .legacy-masonry {
+    columns: 4;
+    column-gap: 18px;
+  }
+}
+
+.legacy-card {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(32px) rotateX(8deg);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.4s;
+  cursor: pointer;
+  perspective: 800px;
+}
+
+.legacy-card.visible {
+  opacity: 1;
+  transform: translateY(0) rotateX(0);
+}
+
+.legacy-card.hidden-filter {
+  display: none;
+}
+
+.legacy-card-frame {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #0c0c10;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+  transition:
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.45s,
+    border-color 0.35s;
+  transform-style: preserve-3d;
+}
+
+.legacy-card.achievements .legacy-card-frame {
+  border-color: rgba(250, 204, 21, 0.15);
+}
+
+.legacy-card.srishti .legacy-card-frame {
+  border-color: rgba(168, 85, 247, 0.2);
+}
+
+.legacy-card:hover .legacy-card-frame {
+  transform: translateY(-8px) scale(1.02) rotate(-0.5deg);
+  box-shadow:
+    0 28px 60px rgba(0, 0, 0, 0.65),
+    0 0 40px rgba(124, 58, 237, 0.2);
+  border-color: rgba(196, 132, 252, 0.35);
+}
+
+.legacy-card-img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  background: linear-gradient(160deg, #111, #1a0a2e);
+}
+
+.legacy-card-placeholder {
+  aspect-ratio: 4 / 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 20px;
+  text-align: center;
+  background: linear-gradient(160deg, #0a0a0a, #15082a);
+}
+
+.legacy-card-placeholder span:first-child {
+  font-size: 2rem;
+  opacity: 0.25;
+}
+
+.legacy-card-placeholder span:last-child {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.legacy-card-meta {
+  padding: 12px 14px 14px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.85));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.legacy-card-year {
+  font-size: 0.6rem;
+  letter-spacing: 0.2em;
+  color: #a855f7;
+}
+
+.legacy-card-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #f0f0f5;
+  margin-top: 4px;
+  line-height: 1.3;
+}
+
+.legacy-card-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+  pointer-events: none;
+}
+
+.legacy-card:hover .legacy-card-shine {
+  opacity: 1;
+}
+
+/* Film strip — memory reel */
+.legacy-filmstrip-label {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  margin-top: 56px;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+}
+
+.legacy-filmstrip {
+  position: relative;
+  z-index: 3;
+  margin-top: 20px;
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.legacy-filmstrip-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  padding: 12px 0 24px;
+  animation: legacyFilmScroll 45s linear infinite;
+}
+
+.legacy-filmstrip:hover .legacy-filmstrip-track {
+  animation-play-state: paused;
+}
+
+@keyframes legacyFilmScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.legacy-film-item {
+  flex: 0 0 auto;
+  width: 140px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  filter: saturate(0.85);
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.legacy-film-item:hover {
+  filter: saturate(1.1);
+  transform: scale(1.05);
+  border-color: rgba(168, 85, 247, 0.4);
+}
+
+.legacy-film-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Lightbox */
+.legacy-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s, visibility 0.4s;
+}
+
+.legacy-lightbox.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.legacy-lightbox-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.94);
+  backdrop-filter: blur(16px);
+}
+
+.legacy-lightbox-content {
+  position: relative;
+  z-index: 1;
+  max-width: min(94vw, 1000px);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.legacy-lightbox-content img {
+  max-width: 100%;
+  max-height: 72vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 0 60px rgba(124, 58, 237, 0.25);
+}
+
+.legacy-lightbox-info {
+  margin-top: 20px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.legacy-lightbox-info h3 {
+  font-family: var(--font-display, "Unbounded", sans-serif);
+  font-size: 1.35rem;
+  color: #fff;
+}
+
+.legacy-lightbox-info p {
+  margin-top: 8px;
+  color: #9ca3af;
+  font-size: 0.9rem;
+  max-width: 480px;
+}
+
+.legacy-lightbox-close,
+.legacy-lightbox-prev,
+.legacy-lightbox-next {
+  position: absolute;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  font-size: 1.25rem;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.legacy-lightbox-close {
+  top: 20px;
+  right: 20px;
+}
+
+.legacy-lightbox-prev {
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.legacy-lightbox-next {
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.legacy-lightbox-close:hover,
+.legacy-lightbox-prev:hover,
+.legacy-lightbox-next:hover {
+  border-color: rgba(168, 85, 247, 0.5);
+  background: rgba(124, 58, 237, 0.3);
+}
+
+@media (max-width: 640px) {
+  .legacy-spotlight-inner {
+    aspect-ratio: 4 / 3;
+  }
+
+  .legacy-masonry {
+    columns: 2;
+    column-gap: 10px;
+  }
+
+  .legacy-card {
+    margin-bottom: 10px;
+  }
+
+  .legacy-lightbox-prev {
+    left: 8px;
+  }
+
+  .legacy-lightbox-next {
+    right: 8px;
+  }
+}
