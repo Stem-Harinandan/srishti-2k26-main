@@ -3,10 +3,9 @@
 ========================================================= */
 .events-universe-section {
   position: relative;
-  padding: 100px 0 120px;
-  background: #000;
+  padding: clamp(100px, 12vw, 140px) 0 clamp(100px, 12vw, 130px);
   overflow: hidden;
-  min-height: 100vh;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -42,6 +41,7 @@
 }
 
 .events-stage {
+  position: relative;
   perspective: 1400px;
   perspective-origin: 50% 42%;
   height: min(72vh, 620px);
@@ -50,6 +50,27 @@
   justify-content: center;
   touch-action: none;
   cursor: grab;
+}
+
+.events-spotlight {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 42% 85% at 50% -5%, rgba(196, 132, 252, 0.38), transparent 58%),
+    radial-gradient(ellipse 28% 50% at 50% 15%, rgba(255, 255, 255, 0.08), transparent 70%);
+  opacity: 0.9;
+  mix-blend-mode: screen;
+}
+
+.events-orbit-trail {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
 }
 
 .events-stage.is-dragging {
@@ -61,12 +82,8 @@
   width: 220px;
   height: 300px;
   transform-style: preserve-3d;
-  transition: transform 0.1s linear;
   will-change: transform;
-}
-
-.events-ring.no-transition {
-  transition: none;
+  transform: translateZ(0);
 }
 
 .event-poster-3d {
@@ -80,25 +97,25 @@
   transform-style: preserve-3d;
   backface-visibility: hidden;
   cursor: pointer;
-  transition:
-    filter 0.4s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.4s;
+  transition: none;
+  will-change: transform, opacity, filter;
 }
 
 .event-poster-inner {
+  position: relative;
   width: 100%;
   height: 100%;
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   background: linear-gradient(145deg, #0c0c12, #1a0a2e);
   box-shadow:
-    0 24px 60px rgba(0, 0, 0, 0.7),
-    0 0 0 1px rgba(168, 85, 247, 0.1);
+    0 28px 70px rgba(0, 0, 0, 0.75),
+    0 0 0 1px rgba(168, 85, 247, 0.15);
   transform-style: preserve-3d;
   transition:
-    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-    box-shadow 0.35s;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s;
 }
 
 .event-poster-3d img {
@@ -114,9 +131,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-display, "Unbounded", sans-serif);
-  font-size: 3.5rem;
-  color: rgba(168, 85, 247, 0.2);
+  font-family: "Cinzel Decorative", serif;
+  font-size: 4.5rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  color: rgba(168, 85, 247, 0.4);
+  text-transform: uppercase;
 }
 
 .event-poster-3d .poster-shine {
@@ -136,58 +156,69 @@
 
 .event-poster-3d.is-front .event-poster-inner {
   box-shadow:
-    0 32px 80px rgba(0, 0, 0, 0.8),
-    0 0 60px rgba(124, 58, 237, 0.35),
-    0 0 0 1px rgba(196, 132, 252, 0.35);
-  border-color: rgba(196, 132, 252, 0.4);
+    0 40px 90px rgba(0, 0, 0, 0.85),
+    0 0 70px rgba(124, 58, 237, 0.45),
+    0 0 0 2px rgba(196, 132, 252, 0.5);
+  border-color: rgba(196, 132, 252, 0.55);
 }
 
 .event-poster-3d.is-front .poster-shine {
   opacity: 1;
 }
 
-.event-poster-3d:not(.is-front) {
-  opacity: 0.55;
-  filter: brightness(0.65) saturate(0.8);
+.event-poster-3d.is-front .event-poster-inner {
+  transform: scale(1.02);
 }
 
-.event-poster-3d:hover:not(.is-front) {
-  opacity: 0.85;
-  filter: brightness(0.9);
+.events-stage:not(.is-dragging) .event-poster-3d.is-front .event-poster-inner {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.events-stage.is-dragging .event-poster-3d,
+.events-stage.is-dragging .event-poster-3d .event-poster-inner {
+  transition: none !important;
 }
 
 .events-hud {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  margin-top: 40px;
+  gap: 28px;
+  margin-top: 48px;
   flex-wrap: wrap;
   text-align: center;
 }
 
 .eu-nav {
-  width: 52px;
-  height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  border: 1px solid rgba(168, 85, 247, 0.35);
-  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(168, 85, 247, 0.45);
+  background: rgba(0, 0, 0, 0.7);
   color: #c084fc;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
   cursor: pointer;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
   transition: all 0.3s;
   flex-shrink: 0;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.2);
 }
 
 .eu-nav:hover {
-  background: rgba(124, 58, 237, 0.35);
-  box-shadow: 0 0 24px rgba(124, 58, 237, 0.4);
+  background: rgba(124, 58, 237, 0.45);
+  box-shadow: 0 0 32px rgba(124, 58, 237, 0.6);
+  transform: scale(1.05);
+  border-color: rgba(196, 132, 252, 0.6);
 }
 
 .eu-info {
+  position: relative;
   min-width: 200px;
   max-width: 420px;
+  padding: 18px 26px;
+  background: transparent;
+  backdrop-filter: none;
 }
 
 .eu-index {
@@ -257,11 +288,12 @@
 
 .events-mobile-track {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
+  scroll-padding-inline: calc(50% - min(39vw, 140px));
   -webkit-overflow-scrolling: touch;
-  padding: 8px 5vw 24px;
+  padding: 16px calc(50% - min(39vw, 140px)) 32px;
   scrollbar-width: none;
 }
 
@@ -273,11 +305,36 @@
   flex: 0 0 min(78vw, 280px);
   scroll-snap-align: center;
   scroll-snap-stop: always;
+  transition: none;
+  opacity: 0.55;
+  transform: scale(0.93) perspective(1000px) rotateY(0deg);
+  will-change: transform, opacity;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.events-mobile-track.is-scrolling .events-mobile-slide {
+  transition: none;
+}
+
+.events-mobile-slide.is-active {
+  opacity: 1;
+  transform: scale(1) perspective(1000px) rotateY(0deg);
+}
+
+.events-mobile-slide.is-active .event-poster-inner {
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.75),
+    0 0 48px rgba(124, 58, 237, 0.28),
+    0 0 20px rgba(196, 132, 252, 0.15);
+  border-color: rgba(196, 132, 252, 0.35);
 }
 
 .events-mobile-slide .event-poster-inner {
-  height: min(58vh, 400px);
-  min-height: 320px;
+  height: min(52vh, 380px);
+  min-height: 300px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .events-mobile-dots {
@@ -307,29 +364,48 @@
 @media (max-width: 768px) {
   .events-universe-section {
     min-height: auto;
-    padding: 80px 0 60px;
+    padding: 48px 0 32px;
   }
 
   .events-hud {
-    margin-top: 24px;
-    gap: 12px;
+    margin-top: 16px;
+    gap: 10px;
+    flex-direction: column;
+    align-items: center;
   }
 
   .eu-nav {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.4rem;
   }
 
   .eu-info {
     min-width: 0;
     flex: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 18px;
   }
 
   .eu-title {
-    font-size: 1.25rem;
+    font-size: 1rem;
   }
 
   .eu-desc {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+  }
+
+  .events-mobile-track {
+    padding: 10px calc(50% - min(39vw, 140px)) 20px;
+  }
+
+  .events-mobile-slide {
+    flex: 0 0 min(80vw, 260px);
+  }
+
+  .events-mobile-slide .event-poster-inner {
+    height: min(44vh, 300px);
+    min-height: 240px;
   }
 }

@@ -4,7 +4,7 @@
 (function () {
   "use strict";
 
-  const BASES = ["public/legacy", "assets/legacy"];
+  const BASES = ["assets/legacy"];
   const CATEGORY_LABELS = {
     achievements: "SV Achievement",
     srishti: "Past Srishti",

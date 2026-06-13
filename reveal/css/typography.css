@@ -1,0 +1,232 @@
+/* =========================================================
+   SRISHTI 2K26 — Typography System v2
+   Clash Display · Space Grotesk · DM Sans · Space Mono
+   Luxury editorial · clean UI labels · warm readable body
+========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+:root {
+  --font-display:   "Space Grotesk", sans-serif;
+  --font-hero:      "Space Grotesk", sans-serif;
+  --font-gothic:    "Space Grotesk", sans-serif;
+  --font-body:      "DM Sans", sans-serif;
+  --font-mono:      "Space Mono", ui-monospace, monospace;
+  --font-elegant:   "Space Grotesk", sans-serif;
+  --font-editorial: "Space Grotesk", sans-serif;
+
+  /* Type scale */
+  --text-xs:   0.68rem;
+  --text-sm:   0.82rem;
+  --text-base: 1rem;
+  --text-lg:   1.15rem;
+  --text-xl:   1.35rem;
+  --text-2xl:  clamp(1.6rem, 4vw, 2.2rem);
+  --text-3xl:  clamp(2rem, 6vw, 3.2rem);
+  --text-hero: clamp(2.8rem, 10vw, 5.5rem);
+}
+
+/* ─── Base ─── */
+html, body {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Display headlines — Cinzel Gothic (Desi Maximalism) ─── */
+.section-title,
+.school-name,
+.eu-title,
+.premium-finale__title,
+.footer-tagline,
+.legacy-spotlight-title,
+.about-card h3,
+.time-card h3,
+.event-poster-3d .poster-fallback-num {
+  font-family: var(--font-display) !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 0.95;
+}
+
+/* Headline size refinements */
+.section-title {
+  font-size: clamp(2.5rem, 8vw, 4.5rem) !important;
+  letter-spacing: 0.05em;
+  font-family: var(--font-hero) !important;
+}
+
+.premium-finale__title {
+  letter-spacing: 0.06em !important;
+  line-height: 0.9 !important;
+  font-family: var(--font-hero) !important;
+}
+
+.eu-title {
+  font-size: clamp(1.8rem, 5vw, 2.8rem) !important;
+  letter-spacing: 0.03em !important;
+}
+
+/* ─── UI labels — Cinzel Gothic (Desi Maximalism) ─── */
+.section-tag,
+.hero-topline,
+.morph-divider__label,
+.announcement-bar,
+.legacy-filter-btn,
+.legacy-spotlight-badge,
+.legacy-filmstrip-label,
+.events-hint,
+.eu-index,
+.premium-finale__eyebrow,
+.countdown-transmission,
+.school-tag,
+.school-sub,
+.footer-school-name,
+.footer-legal,
+.nav-links a,
+.mobile-link,
+.btn {
+  font-family: var(--font-gothic) !important;
+  font-weight: 800 !important;
+  font-style: normal !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Tighter label sizes */
+.section-tag {
+  font-size: var(--text-xs) !important;
+  letter-spacing: 0.25em !important;
+  font-weight: 900 !important;
+}
+
+.hero-topline {
+  font-size: clamp(0.55rem, 2vw, 0.7rem) !important;
+  letter-spacing: 0.35em !important;
+  font-weight: 700 !important;
+  font-family: var(--font-hero) !important;
+}
+
+.morph-divider__label {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.38em !important;
+}
+
+/* ─── Ambient / big background words — Cinzel Decorative (Desi Maximalism) ─── */
+.ambient-word,
+.story-word {
+  font-family: var(--font-hero) !important;
+  font-style: normal !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.03em !important;
+  text-transform: uppercase;
+}
+
+/* ─── Body copy — Unbounded (Desi Maximalism) ─── */
+.hero-description,
+.school-desc,
+.about-card p,
+.eu-desc,
+.legacy-wall-intro,
+.legacy-spotlight-desc,
+.legacy-card-title,
+.premium-finale__sub {
+  font-family: var(--font-body) !important;
+  font-style: normal !important;
+  font-weight: 600;
+}
+
+.hero-description {
+  font-size: clamp(0.95rem, 2.8vw, 1.1rem) !important;
+  line-height: 1.75 !important;
+  letter-spacing: 0.01em !important;
+}
+
+.about-card p,
+.eu-desc,
+.legacy-wall-intro {
+  font-size: 0.96rem !important;
+  line-height: 1.72 !important;
+  letter-spacing: 0.01em;
+}
+
+.premium-finale__sub {
+  font-size: clamp(0.85rem, 2.4vw, 1rem) !important;
+  letter-spacing: 0.15em !important;
+  font-weight: 700 !important;
+  font-family: var(--font-gothic) !important;
+}
+
+/* ─── Finale words — Cinzel Decorative (Desi Maximalism) ─── */
+.premium-finale__words {
+  font-family: var(--font-hero) !important;
+  font-weight: 900 !important;
+  font-style: normal !important;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: clamp(1rem, 2.8vw, 1.3rem) !important;
+}
+
+/* ─── Mono — Space Mono ─── */
+.scroll-label,
+.eu-index,
+.legacy-card-year,
+.legacy-spotlight-year {
+  font-family: var(--font-mono) !important;
+  letter-spacing: 0.18em;
+  font-size: 0.68rem !important;
+}
+
+/* ─── Buttons — Cinzel Gothic (Desi Maximalism) ─── */
+.btn-primary,
+.btn-secondary,
+.premium-finale__cta {
+  font-family: var(--font-gothic) !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.15em;
+  font-size: 0.85rem !important;
+}
+
+/* ─── Nav — Cinzel Gothic (Desi Maximalism) ─── */
+.nav-links a,
+.mobile-link {
+  font-size: 0.75rem !important;
+  letter-spacing: 0.18em !important;
+  font-weight: 800 !important;
+}
+
+/* ─── About card headings: Cinzel Gothic (Desi Maximalism) ─── */
+.about-card h3 {
+  font-size: clamp(1.3rem, 4vw, 1.8rem) !important;
+  letter-spacing: 0.06em !important;
+  font-weight: 900 !important;
+}
+
+/* ─── Countdown numbers: Cinzel Decorative (Desi Maximalism) ─── */
+.time-card h3 {
+  font-size: clamp(3rem, 9vw, 5rem) !important;
+  letter-spacing: 0.02em !important;
+  font-weight: 900 !important;
+  font-family: var(--font-hero) !important;
+}
+
+/* ─── Lightbox / legacy info ─── */
+.legacy-lightbox-info h3 {
+  font-family: var(--font-display) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.legacy-lightbox-info p {
+  font-family: var(--font-body) !important;
+  font-size: 0.9rem;
+  line-height: 1.65;
+}

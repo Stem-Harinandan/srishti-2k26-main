@@ -12,15 +12,14 @@
 /* CRITICAL: No overflow:hidden on html — that was breaking scroll */
 html {
   scroll-behavior: smooth;
-  font-family: 'Space Grotesk', 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 body {
-  font-family: 'Outfit', 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Unbounded", system-ui, sans-serif;
   background: #000000;
   color: #e8e8e8;
   overflow-x: hidden;
   min-height: 100vh;
-  line-height: 1.6;
+  line-height: 1.4;
 }
 .seo-heading{
     position:absolute;
@@ -30,11 +29,24 @@ body {
     height:1px;
     overflow:hidden;
 }
+#preloader {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: black;
+    z-index: 999999;
+    overflow: hidden;
+}
+
+#introVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills screen */
+}
 /* =========================================================
    PREMIUM FONT IMPORTS
 ========================================================= */
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&family=Outfit:wght@100;200;300;400;500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700&family=Poppins:wght@300;400;500;600;700&display=swap');
-
 /* =========================================================
    ROOT VARIABLES
 ========================================================= */
@@ -56,30 +68,31 @@ body {
   --glass: rgba(255, 255, 255, 0.025);
   --glass2: rgba(255, 255, 255, 0.05);
   --transition: 0.38s cubic-bezier(0.4, 0, 0.2, 1);
-  --font-display: "Unbounded", sans-serif;
+  --font-display: "Cinzel", serif;
   --font-hero: "Cinzel Decorative", serif;
-  --font-editorial: "Playfair Display", serif;
-  --font-body: "Barlow Condensed", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
-  --font-elegant: "Cormorant Garamond", serif;
+  --font-editorial: "Cinzel", serif;
+  --font-body: "Unbounded", sans-serif;
+  --font-mono: "Space Mono", monospace;
+  --font-elegant: "Cinzel Decorative", serif;
 }
 
 /* =========================================================
    CANVAS FX LAYERS
 ========================================================= */
+/* Performance - reduce canvas opacity for better performance */
 #nebulaCanvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -3;
-  opacity: 1;
+  opacity: 0.4;
 }
 #particleCanvas {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: -2;
-  opacity: 0.6;
+  opacity: 0.3;
 }
 
 /* =========================================================
@@ -90,13 +103,13 @@ body {
   inset: 0;
 
   background-image: radial-gradient(
-    rgba(255, 255, 255, 0.015) 1px,
+    rgba(255, 255, 255, 0.008) 1px,
     transparent 1px
   );
 
   background-size: 4px 4px;
 
-  opacity: 0.18;
+  opacity: 0.08;
 
   pointer-events: none;
 
@@ -106,8 +119,8 @@ body {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.008) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.008) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(
     ellipse 80% 80% at 50% 50%,
@@ -116,6 +129,7 @@ body {
   );
   pointer-events: none;
   z-index: -1;
+  opacity: 0.5;
 }
 
 /* =========================================================
@@ -218,80 +232,6 @@ body {
   height: 52px;
   opacity: 0.25;
   border-color: var(--purple2);
-}
-
-/* =========================================================
-   PRELOADER
-========================================================= */
-#preloader {
-  position: fixed;
-  inset: 0;
-  background: #000;
-  z-index: 100000;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 24px;
-  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-#preloader.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-#preloaderCanvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-.preloader-logo {
-  width: min(240px, 60vw);
-  position: relative;
-  z-index: 2;
-  filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.3));
-}
-.loader-line-wrap {
-  width: min(300px, 70vw);
-  height: 1px;
-  overflow: hidden;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
-  position: relative;
-  z-index: 2;
-}
-.loader-line {
-  width: 0%;
-  height: 100%;
-  background: linear-gradient(
-    to right,
-    var(--purple),
-    rgba(255, 255, 255, 0.5)
-  );
-  animation: loader 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-@keyframes loader {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 100%;
-  }
-}
-.loader-text {
-  font-size: 0.65rem;
-  letter-spacing: 6px;
-  opacity: 0.3;
-  font-family: var(--font-mono);
-  position: relative;
-  z-index: 2;
-}
-.loader-percent {
-  opacity: 0.3;
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-  position: relative;
-  z-index: 2;
 }
 
 /* =========================================================
@@ -426,8 +366,8 @@ nav#navbar.scrolled {
 }
 .ambient-word {
   position: absolute;
-  font-family: var(--font-elegant);
-  font-style: italic;
+  font-family: var(--font-display);
+  font-style: normal;
   color: rgba(210, 190, 255, 0.22);
   font-weight: 300;
   letter-spacing: 0.14em;
@@ -755,7 +695,6 @@ nav#navbar.scrolled {
 ========================================================= */
 .story-strip {
   position: relative;
-  background: #020202;
   overflow: visible;
 }
 .story-panel {
@@ -766,17 +705,13 @@ nav#navbar.scrolled {
   align-items: center;
   padding: 80px 5vw;
   position: relative;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
+  border-top: none;
 }
 .story-panel::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    ellipse 60% 50% at 50% 50%,
-    rgba(124, 58, 237, 0.035),
-    transparent 70%
-  );
+  background: transparent;
   pointer-events: none;
 }
 .story-line {
@@ -893,11 +828,7 @@ nav#navbar.scrolled {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at 20% 50%,
-    rgba(124, 58, 237, 0.035),
-    transparent 55%
-  );
+  background: transparent;
   pointer-events: none;
 }
 .school-tag {
@@ -1018,11 +949,7 @@ nav#navbar.scrolled {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    circle at top left,
-    rgba(124, 58, 237, 0.07),
-    transparent 55%
-  );
+  background: transparent;
   opacity: 0;
   transition: 0.4s ease;
 }
@@ -1056,9 +983,9 @@ nav#navbar.scrolled {
 .legacy-marquee-section {
   overflow: hidden;
   padding: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-  background: rgba(0, 0, 0, 0.3);
+  border-top: none;
+  border-bottom: none;
+  background: transparent;
   user-select: none;
 }
 .legacy-track-wrap {
@@ -1589,71 +1516,6 @@ nav#navbar.scrolled {
   letter-spacing: 1px;
 }
 
-/* =========================================================
-   GALLERY
-========================================================= */
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: auto;
-  gap: 10px;
-  max-width: 1280px;
-  margin-inline: auto;
-}
-.gallery-item {
-  position: relative;
-  overflow: hidden;
-  border-radius: 18px;
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.045),
-    rgba(255, 255, 255, 0.015)
-  );
-  border: 1px solid rgba(255, 255, 255, 0.045);
-  transition: 0.4s ease;
-}
-.gallery-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at top left,
-    rgba(124, 58, 237, 0.18),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: 0.4s ease;
-}
-.gallery-item:hover::before {
-  opacity: 1;
-}
-.gallery-item:hover {
-  transform: translateY(-4px) scale(1.01);
-}
-.gallery-item:nth-child(1) {
-  grid-column: span 7;
-  height: 360px;
-}
-.gallery-item:nth-child(2) {
-  grid-column: span 5;
-  height: 360px;
-}
-.gallery-item:nth-child(3) {
-  grid-column: span 4;
-  height: 230px;
-}
-.gallery-item:nth-child(4) {
-  grid-column: span 4;
-  height: 230px;
-}
-.gallery-item:nth-child(5) {
-  grid-column: span 4;
-  height: 230px;
-}
-.gallery-item:nth-child(6) {
-  grid-column: span 12;
-  height: 170px;
-}
 
 /* =========================================================
    PEOPLE BEHIND SRISHTI (Team section)
@@ -2373,23 +2235,6 @@ footer {
   .hero-scroll-hint {
     display: none;
   }
-  .gallery-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 6px;
-  }
-  .gallery-item {
-    height: 110px !important;
-    grid-column: auto !important;
-    border-radius: 12px;
-  }
-  .gallery-item:nth-child(1) {
-    grid-column: span 2 !important;
-    height: 160px !important;
-  }
-  .gallery-item:nth-child(6) {
-    grid-column: span 2 !important;
-    height: 120px !important;
-  }
   .scroll-top-btn {
     width: 40px;
     height: 40px;
@@ -2456,36 +2301,6 @@ footer {
   }
 }
 
-@media (max-width: 1024px) {
-  .gallery-grid {
-    grid-template-columns: repeat(6, 1fr);
-    gap: 8px;
-  }
-  .gallery-item:nth-child(1) {
-    grid-column: span 6;
-    height: 250px;
-  }
-  .gallery-item:nth-child(2) {
-    grid-column: span 3;
-    height: 180px;
-  }
-  .gallery-item:nth-child(3) {
-    grid-column: span 3;
-    height: 180px;
-  }
-  .gallery-item:nth-child(4) {
-    grid-column: span 2;
-    height: 160px;
-  }
-  .gallery-item:nth-child(5) {
-    grid-column: span 2;
-    height: 160px;
-  }
-  .gallery-item:nth-child(6) {
-    grid-column: span 2;
-    height: 160px;
-  }
-}
 
 /* =========================================================
    CURSOR TRAIL — REMOVED (replaced by torch effect)
@@ -3091,31 +2906,6 @@ footer {
   background-clip: text;
 }
 
-/* =========================================================
-   GALLERY ITEMS — HOLO HOVER
-========================================================= */
-.gallery-item {
-  --g-holo-x: 50%;
-  --g-holo-y: 50%;
-  --g-holo-opacity: 0;
-}
-.gallery-item::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    ellipse 60% 60% at var(--g-holo-x) var(--g-holo-y),
-    rgba(168, 85, 247, 0.25) 0%,
-    rgba(0, 200, 255, 0.15) 35%,
-    transparent 70%
-  );
-  mix-blend-mode: screen;
-  opacity: var(--g-holo-opacity);
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 2;
-}
 
 /* =========================================================
    DIVIDER BADGE — SPIN
@@ -3993,15 +3783,6 @@ body {
   pointer-events: none !important;
 }
 
-/* ensure preloader fully disappears */
-#preloader.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition:
-    opacity 1s ease,
-    visibility 1s ease;
-}
 
 /* seamless navbar */
 nav#navbar {
@@ -4067,18 +3848,6 @@ nav#navbar.scrolled {
   backface-visibility: hidden;
 }
 
-/* better preloader */
-#preloader {
-  background: radial-gradient(
-    circle at center,
-    rgba(124, 58, 237, 0.16),
-    rgba(0, 0, 0, 1) 70%
-  );
-}
-
-.preloader-logo {
-  filter: drop-shadow(0 0 30px rgba(168, 85, 247, 0.45));
-}
 
 /* =========================================================
    CRITICAL SCROLL FIXES
@@ -4127,12 +3896,6 @@ canvas {
   pointer-events: none !important;
 }
 
-/* preloader full disable */
-#preloader.hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none !important;
-}
 
 /* mobile scroll stability */
 body.menu-open {
@@ -4214,15 +3977,6 @@ nav#navbar.scrolled {
     line-height: 0.78;
   }
 }
-/* prevent stuck preloaders */
-
-body.loaded {
-  overflow-y: auto !important;
-}
-
-#preloader {
-  will-change: opacity;
-}
 
 html,
 body {
@@ -4234,22 +3988,7 @@ body {
   position: relative;
 }
 
-/* Preloader visibility handled in css/animations.css + js/preloader.js */
 
-.preloader-logo {
-  animation: preloaderFloat 4s ease-in-out infinite;
-}
-
-@keyframes preloaderFloat {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
 /* =========================================================
    MOBILE MASTER FIX
 ========================================================= */
@@ -4554,19 +4293,6 @@ body {
 
   .schedule-info p {
     font-size: 0.82rem;
-  }
-
-  /* =========================================
-     GALLERY
-  ========================================= */
-
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .gallery-item {
-    min-height: 240px;
   }
 
   /* =========================================

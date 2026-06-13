@@ -5,6 +5,14 @@
    rAF ticker for anything that needs scrollY.
 ========================================================= */
 // Expose scrollY reliably
+
+
+const video = document.getElementById('introVideo');
+
+video.addEventListener('ended', () => {
+    document.getElementById('preloader').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+});
 function getScrollY() {
   return window.scrollY || document.documentElement.scrollTop || 0;
 }
@@ -382,8 +390,6 @@ document.addEventListener("click", (e) => {
   }
 })();
 
-/* Preloader: see js/preloader.js (video intro) */
-
 (function initStoryStrip() {
   const panels = document.querySelectorAll(".story-panel");
   if (!panels.length) return;
@@ -507,7 +513,7 @@ if (!isTouchDevice) {
   animateCursor();
   document
     .querySelectorAll(
-      "a, button, .event-card, .gallery-item, .sponsor-card, .about-card, .hero-logo-wrap, .school-card",
+      "a, button, .event-card, .sponsor-card, .about-card, .hero-logo-wrap, .school-card",
     )
     .forEach((item) => {
       item.addEventListener(
@@ -677,7 +683,7 @@ const hoursEl = document.getElementById("hours");
 const minutesEl = document.getElementById("minutes");
 const secondsEl = document.getElementById("seconds");
 const daysInlineEl = document.getElementById("daysInline");
-const targetDate = new Date("October 10, 2026 09:00:00").getTime();
+const targetDate = new Date("July 11, 2026 09:00:00").getTime();
 
 function updateCountdown() {
   const distance = targetDate - Date.now();
@@ -858,9 +864,8 @@ window.addEventListener("resize", () => {
 console.log(`
 ╔══════════════════════════════════╗
 ║     SRISHTI 2K26                 ║
-║     Saraswathy Vidhyalaya        ║
-║     Crafted In Chaos.            ║
-║     Remembered In Echoes.        ║
+║     Saraswathi Vidyalaya         ║
+║     Rhapsody of Radiance.        ║
 ╚══════════════════════════════════╝
 `);
 /* Aurora canvas removed — was causing background flicker */
@@ -924,21 +929,6 @@ console.log(`
       }, i * 80);
     }
   }
-
-  // Gallery items holographic
-  document.querySelectorAll(".gallery-item").forEach((item) => {
-    item.addEventListener("mousemove", (e) => {
-      const rect = item.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      item.style.setProperty("--g-holo-x", `${x}%`);
-      item.style.setProperty("--g-holo-y", `${y}%`);
-      item.style.setProperty("--g-holo-opacity", "1");
-    });
-    item.addEventListener("mouseleave", () => {
-      item.style.setProperty("--g-holo-opacity", "0");
-    });
-  });
 })();
 
 /* =========================================================
@@ -1314,7 +1304,7 @@ console.log(`
   // Each word has a base position + energetic drift params
   const wordData = [
     {
-      text: "CHAOS",
+      text: "RHAPSODY",
       px: 0.06,
       py: 0.06,
       fs: 14,
@@ -1386,7 +1376,7 @@ console.log(`
       dy: 0.004,
     },
     {
-      text: "ECHOES",
+      text: "RADIANCE",
       px: 0.48,
       py: 0.15,
       fs: 12,
@@ -1936,7 +1926,7 @@ console.log(`
   let prevSec = -1;
   function wrappedCountdown() {
     const distance =
-      new Date("October 10, 2026 09:00:00").getTime() - Date.now();
+      new Date("July 11, 2026 09:00:00").getTime() - Date.now();
     const sec = Math.floor((distance % 60000) / 1000);
     if (sec !== prevSec) {
       prevSec = sec;
@@ -1969,7 +1959,7 @@ console.log(`
         link.style.transform = "";
       },
       3200 + i * 80,
-    ); // after preloader
+    ); 
   });
 })();
 
@@ -2008,7 +1998,7 @@ document.querySelectorAll(".section-title").forEach((el) => {
   animate();
 })();
 /* =========================================================
-   GALAXY CANVAS — Saraswathy Vidhyalaya starry sky
+   GALAXY CANVAS — Saraswathi Vidyalaya starry sky
 ========================================================= */
 (function initSchoolGalaxy() {
   const section = document.querySelector(".school-section");
@@ -2353,13 +2343,12 @@ document.querySelectorAll(".section-title").forEach((el) => {
 /* =========================================================
    CINEMATIC STORY INTRO — ensure story strip is seen first
    Make the first story panel ("IT STARTS WITH AN IDEA")
-   animate in like a title card after preloader
+   animate in like a title card 
 ========================================================= */
 (function initCinematicIntro() {
   const firstPanel = document.querySelector('.story-panel[data-story="0"]');
   if (!firstPanel) return;
 
-  // After preloader fades, if user hasn't scrolled yet,
   // gently auto-scroll to the story strip for the cinematic reveal
   let introPlayed = false;
   function playStoryIntro() {
@@ -2367,8 +2356,8 @@ document.querySelectorAll(".section-title").forEach((el) => {
     introPlayed = true;
     firstPanel.classList.add("story-intro-active");
   }
-  window.addEventListener("srishti:preloader-done", playStoryIntro);
-  if (!document.getElementById("preloader")) playStoryIntro();
+  window.addEventListener("load", playStoryIntro);
+  playStoryIntro();
 })();
 
 /* ===== CINEMATIC MOTION PATCH ===== */
@@ -2521,10 +2510,10 @@ window.addEventListener(
 );
 
 /* =========================================================
-   FORCE SCROLL SAFETY (after preloader)
+   FORCE SCROLL SAFETY
 ========================================================= */
 
-window.addEventListener("srishti:preloader-done", () => {
+window.addEventListener("load", () => {
   document.documentElement.style.overflowY = "auto";
   document.body.style.overflowY = "auto";
 });
@@ -2533,7 +2522,5 @@ window.addEventListener("wheel", () => {}, { passive: true });
 window.addEventListener("touchmove", () => {}, { passive: true });
 
 window.addEventListener("resize", () => {
-  if (!document.body.classList.contains("preloader-active")) {
-    document.body.style.overflowY = "auto";
-  }
+  document.body.style.overflowY = "auto";
 });

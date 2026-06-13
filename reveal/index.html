@@ -9,51 +9,52 @@
     </title>
     <meta
       name="description"
-      content="Srishti 2K26 is the flagship interschool cultural fest of Saraswathi Vidyalaya, Thiruvananthapuram, featuring competitions, performances, creativity, innovation, and student talent."
+      content="Srishti 2K26 — Rhapsody of Radiance. Saraswathi Vidyalaya interschool cultural fest, Thiruvananthapuram."
     />
     <link rel="icon" type="image/png" href="/assets/logo.png" />
     <link rel="apple-touch-icon" href="/assets/logo.png" />
     <link rel="manifest" href="/manifest.json" />
     <meta name="theme-color" content="#000000" />
-    <meta property="og:title" content="Srishti 2K26 | Interschool Cultural Fest" />
+    <meta property="og:title" content="Srishti 2K26 | Rhapsody of Radiance" />
     <meta
       property="og:description"
-      content="Kerala's premium interschool cultural experience — music, performance, art and energy."
+      content="Rhapsody of Radiance — Saraswathi Vidyalaya's flagship interschool cultural fest."
     />
     <meta property="og:image" content="https://srishti.eu.org/assets/logo.png" />
     <meta property="og:url" content="https://srishti.eu.org/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Srishti 2K26" />
-    <meta name="twitter:description" content="Saraswathi Vidyalaya interschool cultural fest." />
+    <meta name="twitter:description" content="Srishti 2K26 — Rhapsody of Radiance · Saraswathi Vidyalaya" />
     <meta name="twitter:image" content="https://srishti.eu.org/assets/logo.png" />
     <link rel="canonical" href="https://srishti.eu.org/" />
-    <link
-      rel="preload"
-      as="video"
-      href="media/video/logofirst6secs.mp4"
-      type="video/mp4"
-      fetchpriority="high"
-    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.fontshare.com" />
+    <!-- Clash Display (editorial display) via Fontshare -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@300;400;500&family=Cinzel+Decorative:wght@400;700;900&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Unbounded:wght@200;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;1,600&display=swap"
+      href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Space Grotesk (UI labels/nav), DM Sans (body), Space Mono (mono) via Google -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/srishti-redesign.css" />
     <link rel="stylesheet" href="css/events-3d.css" />
-    <link rel="stylesheet" href="css/legacy-wall.css" />
     <link rel="stylesheet" href="css/animations.css" />
     <link rel="stylesheet" href="css/section-dividers.css" />
+    <link rel="stylesheet" href="css/design-polish.css" />
+    <link rel="stylesheet" href="css/typography.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Event",
         "name": "Srishti 2K26",
         "url": "https://srishti.eu.org/",
-        "description": "Srishti 2K26 is the flagship interschool cultural fest of Saraswathi Vidyalaya, Thiruvananthapuram.",
+        "description": "Srishti 2K26 — Rhapsody of Radiance. Flagship interschool cultural fest of Saraswathi Vidyalaya, Thiruvananthapuram.",
         "image": ["https://srishti.eu.org/logo_blur.png"],
         "startDate": "2026-06-02T09:00:00+05:30",
         "endDate": "2026-06-04T18:00:00+05:30",
@@ -78,9 +79,16 @@
     </script>
   </head>
   <body class="has-announce">
+
+    <div id="preloader">
+      <video id="introVideo" autoplay muted playsinline>
+          <source src="preloader.mp4" type="video/mp4">
+      </video>
+    </div>
+
     <a href="#heroContent" class="skip-link">Skip to main content</a>
     <div class="announcement-bar" id="announcementBar" role="region" aria-label="Announcement">
-      <span><strong>Srishti 2K26</strong> — Gates open soon. Follow for live updates.</span>
+      <span><strong>Srishti 2K26</strong> — <em>Rhapsody of Radiance</em> · Gates open soon</span>
       <button type="button" class="announce-close" aria-label="Dismiss announcement">✕</button>
     </div>
     <h1 class="seo-heading">
@@ -98,34 +106,11 @@
     <div class="cursor-dot"></div>
     <div class="cursor-ring"></div>
 
-    <!-- PRELOADER — logo intro video -->
-    <div id="preloader" aria-live="polite" aria-busy="true" aria-label="Loading">
-      <video
-        id="preloaderVideo"
-        class="preloader-video"
-        muted
-        playsinline
-        autoplay
-        preload="auto"
-        disablePictureInPicture
-        aria-hidden="true"
-      >
-        <source src="media/video/logofirst6secs.mp4" type="video/mp4" />
-        <source src="logofirst6secs.mp4" type="video/mp4" />
-      </video>
-      <div class="preloader-vignette" aria-hidden="true"></div>
-      <div class="preloader-fallback" id="preloaderFallback">
-        <img src="assets/logo.png" alt="Srishti" />
-        <p class="preloader-fallback-text">Loading experience</p>
-      </div>
-    </div>
-
     <!-- NAVBAR -->
     <nav id="navbar" aria-label="Main navigation">
       <a href="#" class="nav-brand"><img src="assets/logo.png" alt="Srishti 2K26 home" width="140" height="48" /></a>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#legacy">Legacy</a>
         <a href="#events">Events</a>
         <a href="#trailer">Trailer</a>
         <a href="#countdown">Countdown</a>
@@ -144,7 +129,6 @@
     <aside class="mobile-menu" id="mobileMenu">
       <button class="mobile-close" id="mobileClose">✕</button>
       <a href="#about" class="mobile-link">About</a>
-      <a href="#legacy" class="mobile-link">Legacy</a>
       <a href="#events" class="mobile-link">Events</a>
       <a href="#trailer" class="mobile-link">Trailer</a>
       <a href="#countdown" class="mobile-link">Countdown</a>
@@ -156,34 +140,31 @@
       <canvas id="heroStarsCanvas" aria-hidden="true"></canvas>
       <canvas id="heroGalaxyCanvas"></canvas>
       <canvas id="torchCanvas"></canvas>
-      <video autoplay muted loop playsinline class="hero-video">
-        <source src="background.mp4" type="video/mp4" />
-      </video>
       <div class="hero-overlay"></div>
       <div class="hero-ambient-words">
         <span class="ambient-word" style="top: 12%; left: 8%; font-size: 5vw"
-          >CHAOS</span
+          >RHAPSODY</span
         >
         <span class="ambient-word" style="top: 22%; right: 10%; font-size: 3vw"
-          >ECHOES</span
+          >RADIANCE</span
         >
         <span
           class="ambient-word"
           style="bottom: 18%; left: 12%; font-size: 4vw"
           >SRISHTI</span
         >
+        <span class="ambient-word" style="top: 48%; left: 50%; font-size: 6vw"
+          >2K26</span
+        >
         <span
           class="ambient-word"
           style="bottom: 26%; right: 14%; font-size: 3vw"
           >LEGACY</span
         >
-        <span class="ambient-word" style="top: 48%; left: 50%; font-size: 6vw"
-          >2K26</span
-        >
       </div>
 
       <div class="hero-content" id="heroContent">
-        <div class="hero-topline">INTERSCHOOL CULTURAL EXPERIENCE</div>
+        <div class="hero-topline">RHAPSODY OF RADIANCE</div>
         <!-- INTERACTIVE LOGO -->
         <div class="hero-logo-wrap" id="heroLogoWrap">
           <canvas id="logoParticleCanvas"></canvas>
@@ -195,7 +176,7 @@
           />
         </div>
         <p class="hero-description">
-          A cinematic collision of music, performance, fashion, art and energy.
+          Saraswathi Vidyalaya presents Srishti 2K26 — a symphony of light, performance, and culture.
         </p>
         <div class="hero-buttons">
           <a href="#events" class="btn btn-primary">Explore Events</a>
@@ -281,12 +262,12 @@
           <img src="assets/sv_logo.png" alt="Srishti" class="school-section-logo" />
         </div>
         <p class="school-tag">PRESENTED BY</p>
-        <h2 class="school-name">Saraswathy Vidhyalaya</h2>
-        <p class="school-sub">Higher Secondary School · Est. in Excellence</p>
+        <h2 class="school-name">Saraswathi Vidyalaya</h2>
+        <p class="school-sub">Higher Secondary School · Thiruvananthapuram</p>
         <div class="school-divider"></div>
         <p class="school-desc">
-          Rooted in a tradition of academic and cultural brilliance,<br />
-          Saraswathy Vidhyalaya proudly presents its grandest edition yet.
+          Rooted in academic and cultural brilliance,<br />
+          Saraswathi Vidyalaya proudly presents <em>Rhapsody of Radiance</em>.
         </p>
       </div>
     </section>
@@ -329,74 +310,6 @@
       <div class="morph-divider__glow"></div>
       <svg class="morph-divider__svg" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
         <defs>
-          <linearGradient id="morphGradLegacy" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#7c3aed" stop-opacity="0" />
-            <stop offset="50%" stop-color="#a855f7" stop-opacity="0.35" />
-            <stop offset="100%" stop-color="#7c3aed" stop-opacity="0" />
-          </linearGradient>
-        </defs>
-        <path fill="url(#morphGradLegacy)" opacity="0.5">
-          <animate
-            attributeName="d"
-            dur="12s"
-            repeatCount="indefinite"
-            values="M0,40 C240,64 480,12 720,40 C960,56 1200,24 1440,40 L1440,72 L0,72 Z;M0,28 C240,12 480,52 720,28 C960,16 1200,44 1440,28 L1440,72 L0,72 Z;M0,40 C240,64 480,12 720,40 C960,56 1200,24 1440,40 L1440,72 L0,72 Z"
-          />
-        </path>
-      </svg>
-      <div class="morph-divider__center">
-        <span class="morph-divider__line"></span>
-        <span class="morph-divider__label">LEGACY</span>
-        <span class="morph-divider__line"></span>
-      </div>
-    </div>
-
-    <!-- THE LEGACY WALL — SV achievements & past Srishti photos -->
-    <section id="legacy" class="legacy-wall-section" aria-label="Legacy Wall">
-      <canvas id="legacyWallParticles" aria-hidden="true"></canvas>
-      <div class="section-header reveal">
-        <p class="section-tag">SARASWATHI VIDYALAYA · SRISHTI</p>
-        <h2 class="section-title">The Legacy Wall</h2>
-        <p class="legacy-wall-intro reveal">
-          A living archive of school achievements, past Srishti editions, and the moments that built this legacy.
-        </p>
-      </div>
-
-      <div class="legacy-filters reveal" role="tablist" aria-label="Filter memories">
-        <button type="button" class="legacy-filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
-        <button type="button" class="legacy-filter-btn" data-filter="achievements" role="tab" aria-selected="false">SV Achievements</button>
-        <button type="button" class="legacy-filter-btn" data-filter="srishti" role="tab" aria-selected="false">Past Srishti</button>
-        <button type="button" class="legacy-filter-btn" data-filter="moments" role="tab" aria-selected="false">Campus Moments</button>
-      </div>
-
-      <div class="legacy-spotlight reveal" id="legacySpotlight" aria-live="polite"></div>
-
-      <div class="legacy-masonry reveal" id="legacyMasonry" role="list"></div>
-
-      <p class="legacy-filmstrip-label reveal">Memory reel</p>
-      <div class="legacy-filmstrip reveal" aria-hidden="true">
-        <div class="legacy-filmstrip-track" id="legacyFilmstripTrack"></div>
-      </div>
-
-      <div class="legacy-lightbox" id="legacyLightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Photo viewer">
-        <div class="legacy-lightbox-backdrop"></div>
-        <button type="button" class="legacy-lightbox-close" aria-label="Close">✕</button>
-        <button type="button" class="legacy-lightbox-prev" aria-label="Previous photo">‹</button>
-        <button type="button" class="legacy-lightbox-next" aria-label="Next photo">›</button>
-        <div class="legacy-lightbox-content">
-          <img src="" alt="" />
-          <div class="legacy-lightbox-info">
-            <h3></h3>
-            <p></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="morph-divider morph-divider--tight" aria-hidden="true">
-      <div class="morph-divider__glow"></div>
-      <svg class="morph-divider__svg" viewBox="0 0 1440 72" preserveAspectRatio="none" aria-hidden="true">
-        <defs>
           <linearGradient id="morphGradEvents" x1="0%" y1="0%" x2="100%" y2="0%">
             <stop offset="0%" stop-color="#9333ea" stop-opacity="0" />
             <stop offset="50%" stop-color="#e879f9" stop-opacity="0.3" />
@@ -431,6 +344,8 @@
       <div class="events-universe">
         <canvas id="eventsParticles" aria-hidden="true"></canvas>
         <div class="events-stage">
+          <div class="events-spotlight" aria-hidden="true"></div>
+          <canvas id="eventsOrbitTrail" class="events-orbit-trail" aria-hidden="true"></canvas>
           <div class="events-ring" id="eventsRing"></div>
         </div>
         <div class="events-mobile-wrap">
@@ -481,7 +396,6 @@
           class="trailer-video"
           controls
           playsinline
-          poster="thumbnail.jpg"
         >
           <source src="trailer.mp4" type="video/mp4" />
         </video>
@@ -539,6 +453,7 @@
     <div class="premium-finale" aria-labelledby="finaleTitle">
       <div class="premium-finale__aurora" aria-hidden="true"></div>
       <canvas id="finaleParticles" aria-hidden="true"></canvas>
+      <div class="premium-finale__stars" aria-hidden="true"></div>
       <div class="morph-divider morph-divider--finale" aria-hidden="true">
         <svg class="morph-divider__svg" viewBox="0 0 1440 56" preserveAspectRatio="none">
           <path fill="#000" opacity="1">
@@ -560,20 +475,32 @@
         </svg>
       </div>
       <div class="premium-finale__inner reveal">
-        <p class="premium-finale__eyebrow">Srishti 2K26 · Finale</p>
-        <h2 id="finaleTitle" class="premium-finale__title">See You Inside</h2>
+        <div class="premium-finale__logo-wrap">
+          <img src="assets/logo.png" alt="Srishti 2K26" class="premium-finale__logo" />
+        </div>
+        <h2 id="finaleTitle" class="premium-finale__title">Rhapsody of Radiance</h2>
         <p class="premium-finale__sub">Saraswathi Vidyalaya · Thiruvananthapuram</p>
-        <p class="premium-finale__words" aria-hidden="true">
-          <span>Crafted in chaos</span>
-          <span>·</span>
-          <span>Remembered in echoes</span>
-        </p>
+        <div class="premium-finale__words-block">
+          <svg class="premium-finale__constellation" id="finaleConstellation" aria-hidden="true"></svg>
+          <p class="premium-finale__words" id="finaleWords">
+            <span data-constellation-node>Rhapsody</span>
+            <span aria-hidden="true">·</span>
+            <span data-constellation-node>of</span>
+            <span aria-hidden="true">·</span>
+            <span data-constellation-node>Radiance</span>
+          </p>
+        </div>
+        <div class="premium-finale__glow-orbs">
+          <div class="glow-orb glow-orb--1"></div>
+          <div class="glow-orb glow-orb--2"></div>
+          <div class="glow-orb glow-orb--3"></div>
+        </div>
         <a href="#hero" class="premium-finale__cta">Return to the gate</a>
       </div>
     </div>
 
     <!-- FOOTER -->
-    <footer id="contact" class="site-footer">
+    <footer id="contact" class="site-footer site-footer--minimal">
       <div class="footer-inner reveal">
         <div class="footer-brand-row">
           <img src="assets/logo.png" alt="Srishti" class="footer-logo-sm" width="56" height="56" />
@@ -607,7 +534,7 @@
             </svg>
           </a>
         </div>
-        <p class="footer-legal">© Srishti 2K26 · Crafted In Chaos · Remembered In Echoes</p>
+        <p class="footer-legal">© Srishti 2K26 · Rhapsody of Radiance · Saraswathi Vidyalaya</p>
       </div>
     </footer>
 
@@ -617,25 +544,13 @@
       <span aria-hidden="true">↑</span>
     </button>
 
-    <audio id="bgMusic" loop>
-      <source src="background-music.mp3" type="audio/mp3" />
-    </audio>
-    <audio id="revealSound">
-      <source src="reveal.mp3" type="audio/mp3" />
-    </audio>
-    <audio id="hoverSound">
-      <source src="hover.mp3" type="audio/mp3" />
-    </audio>
-    <audio id="clickSound">
-      <source src="click.mp3" type="audio/mp3" />
-    </audio>
-    <script src="js/preloader.js"></script>
+    <!-- Audio files removed - optional feature -->
     <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
     <script src="js/script.js" defer></script>
     <script src="js/audio.js" defer></script>
-    <script src="js/legacy-wall.js" defer></script>
     <script src="js/events-3d.js" defer></script>
     <script src="js/section-dividers.js" defer></script>
+    <script src="js/design-polish.js" defer></script>
     <script src="js/srishti-core.js" defer></script>
   </body>
 </html>

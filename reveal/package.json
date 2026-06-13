@@ -2,7 +2,7 @@
   "name": "srishti-2k26",
   "version": "2.0.0",
   "private": true,
-  "description": "Srishti 2K26 — premium interschool fest website",
+  "description": "Srishti 2K26 — Rhapsody of Radiance · Saraswathi Vidyalaya",
   "scripts": {
     "build": "node scripts/verify-build.js",
     "lint": "node scripts/lint-static.js",

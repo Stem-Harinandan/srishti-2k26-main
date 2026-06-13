@@ -1,6 +1,6 @@
 # Srishti 2K26 — Website
 
-Premium static site for Saraswathi Vidyalaya interschool cultural fest.
+Srishti 2K26 — **Rhapsody of Radiance**. Saraswathi Vidyalaya interschool cultural fest site.
 
 ---
 
@@ -20,12 +20,11 @@ reveal/
 ├── css/                    # All stylesheets
 │   ├── style.css           # Base layout & sections
 │   ├── srishti-redesign.css
-│   ├── animations.css      # Preloader, nav, footer
+│   ├── animations.css      # Nav, footer
 │   ├── events-3d.css       # Event Universe 3D ring
 │   └── legacy-wall.css     # Legacy Wall photos
 │
 ├── js/                     # All scripts
-│   ├── preloader.js        # Video intro preloader
 │   ├── script.js           # Core animations, scroll FX
 │   ├── srishti-core.js     # Lenis, hero stars, story sky
 │   ├── events-3d.js        # 3D poster ring + mobile carousel
@@ -130,10 +129,7 @@ Place in project **root** (default) or `media/` subfolders:
 
 | File | Purpose |
 |------|---------|
-| `media/video/logofirst6secs.mp4` | **Preloader intro** (6s logo video) |
-| `background.mp4` | Hero background video |
 | `trailer.mp4` | Trailer section |
-| `thumbnail.jpg` | Trailer poster |
 | `background-music.mp3` | Ambient audio |
 | `hover.mp3`, `click.mp3`, `reveal.mp3` | UI sounds |
 
@@ -175,10 +171,10 @@ None required for static hosting.
 | Colors / theme | `css/srishti-redesign.css`, `css/style.css` |
 | Event 3D behavior | `js/events-3d.js` |
 | Legacy gallery | `js/legacy-wall.js`, `data/legacy.json` |
-| Preloader / hero | `js/script.js`, `css/animations.css` |
+| Hero animations | `js/script.js`, `css/animations.css` |
 
 ---
 
 ## License / credits
 
-© Srishti 2K26 · Saraswathi Vidyalaya
+© Srishti 2K26 · Rhapsody of Radiance · Saraswathi Vidyalaya
