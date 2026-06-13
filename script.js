@@ -282,10 +282,10 @@ if (TEST_MODE) {
 } else {
 
     revealDate =
-    new Date("2026-06-25T17:00:00");
+    new Date("2026-06-13T17:00:00");
 
     websiteRevealDate =
-    new Date("2026-06-28T17:00:00");
+    new Date("2026-06-13T17:00:00");
 
 }
 
