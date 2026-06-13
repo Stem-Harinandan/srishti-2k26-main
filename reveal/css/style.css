@@ -29,34 +29,20 @@ body {
     height:1px;
     overflow:hidden;
 }
-/* PRELOADER */
 #preloader {
     position: fixed;
     inset: 0;
     width: 100vw;
     height: 100vh;
-    background: #000;
+    background: black;
     z-index: 999999;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 
-/* VIDEO */
 #introVideo {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: center center;
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-    #introVideo {
-        object-fit: contain;
-        background: #000;
-    }
+    object-fit: cover; /* fills screen */
 }
 /* =========================================================
    PREMIUM FONT IMPORTS
@@ -4728,9 +4714,8 @@ canvas {
 
 @media (max-width: 768px) {
   .countdown-grid {
-    grid-template-columns: repeat(2, 1fr);
-
-    gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
   }
 
   .count-box {

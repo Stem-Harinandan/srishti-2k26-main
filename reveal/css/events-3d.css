@@ -305,11 +305,11 @@
   flex: 0 0 min(78vw, 280px);
   scroll-snap-align: center;
   scroll-snap-stop: always;
-  transition: none;
-  opacity: 0.55;
-  transform: scale(0.93) perspective(1000px) rotateY(0deg);
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+  opacity: 0.4;
+  transform: scale(0.85) perspective(1200px) rotateY(-15deg);
   will-change: transform, opacity;
-  perspective: 1000px;
+  perspective: 1200px;
   transform-style: preserve-3d;
 }
 
@@ -319,7 +319,7 @@
 
 .events-mobile-slide.is-active {
   opacity: 1;
-  transform: scale(1) perspective(1000px) rotateY(0deg);
+  transform: scale(1.05) perspective(1200px) rotateY(0deg) translateZ(20px);
 }
 
 .events-mobile-slide.is-active .event-poster-inner {
@@ -370,14 +370,14 @@
   .events-hud {
     margin-top: 16px;
     gap: 10px;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
   }
 
   .eu-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 1.4rem;
+    display: none;
   }
 
   .eu-info {
@@ -385,7 +385,9 @@
     flex: 1;
     width: 100%;
     max-width: 100%;
-    padding: 14px 18px;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
   }
 
   .eu-title {
